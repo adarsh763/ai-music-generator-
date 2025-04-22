@@ -1,0 +1,372 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "LyricVision API",
+    "description": "API for generating music and lyrics with AI",
+    "version": "1.0.0",
+    "contact": {
+      "email": "api@lyricvision.com"
+    }
+  },
+  "host": "api.lyricvision.com",
+  "basePath": "/v1",
+  "schemes": ["https"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/generate": {
+      "post": {
+        "summary": "Generate music and/or lyrics",
+        "description": "Creates a new generation job for music, lyrics, or both based on provided parameters",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "generationRequest",
+            "description": "Generation request parameters",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GenerationRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Generation job created successfully",
+            "schema": {
+              "$ref": "#/definitions/GenerationResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid input parameters"
+          },
+          "429": {
+            "description": "Rate limit exceeded"
+          }
+        }
+      }
+    },
+    "/status/{jobId}": {
+      "get": {
+        "summary": "Get generation job status",
+        "description": "Returns the status and results of a generation job",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "jobId",
+            "required": true,
+            "type": "string",
+            "description": "ID of the generation job"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Job status retrieved successfully",
+            "schema": {
+              "$ref": "#/definitions/JobStatusResponse"
+            }
+          },
+          "404": {
+            "description": "Job not found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "GenerationRequest": {
+      "type": "object",
+      "required": ["type", "genre"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["music", "lyrics", "both"],
+          "description": "Type of content to generate"
+        },
+        "inputText": {
+          "type": "string",
+          "description": "Prompt text or lyrics to use as input",
+          "maxLength": 5000
+        },
+        "audioUrl": {
+          "type": "string",
+          "format": "url",
+          "description": "URL to existing audio file for reference or enhancement"
+        },
+        "genre": {
+          "type": "string",
+          "enum": ["pop", "rock", "edm", "hiphop", "jazz", "classical", "lofi", "country", "rnb", "indie", "folk"],
+          "description": "Music genre to generate"
+        },
+        "mood": {
+          "type": "string",
+          "enum": ["happy", "sad", "energetic", "calm", "aggressive", "romantic", "melancholic", "uplifting", "dark", "dreamy", "nostalgic"],
+          "description": "Emotional mood of the music"
+        },
+        "tempo": {
+          "type": "integer",
+          "minimum": 40,
+          "maximum": 240,
+          "description": "Tempo in beats per minute (BPM)"
+        },
+        "key": {
+          "type": "string",
+          "enum": ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B", "Cm", "C#m", "Dm", "D#m", "Em", "Fm", "F#m", "Gm", "G#m", "Am", "A#m", "Bm"],
+          "description": "Musical key of the composition"
+        },
+        "structure": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["type", "duration"],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": ["intro", "verse", "chorus", "bridge", "outro"],
+                "description": "Part type"
+              },
+              "duration": {
+                "type": "integer",
+                "minimum": 4,
+                "maximum": 32,
+                "description": "Duration in measures"
+              },
+              "lyricsPrompt": {
+                "type": "string",
+                "description": "Text prompt for specific section lyrics"
+              }
+            }
+          },
+          "description": "Song structure with ordering of parts"
+        },
+        "instruments": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["vocals", "piano", "guitar", "bass", "drums", "strings", "synth", "brass", "woodwinds", "percussion"]
+          },
+          "description": "Instruments to include in the composition"
+        },
+        "vocalGender": {
+          "type": "string",
+          "enum": ["male", "female", "neutral"],
+          "description": "Voice type for vocal synthesis"
+        },
+        "duration": {
+          "type": "integer",
+          "minimum": 30,
+          "maximum": 300,
+          "description": "Target duration in seconds"
+        },
+        "advancedParams": {
+          "type": "object",
+          "properties": {
+            "harmonyComplexity": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10,
+              "description": "Complexity of chord progressions (1-10)"
+            },
+            "rhythmComplexity": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10,
+              "description": "Complexity of rhythmic patterns (1-10)"
+            },
+            "lydynamicRange": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10,
+              "description": "Dynamic range of volume (1-10)"
+            },
+            "rhymeScheme": {
+              "type": "string",
+              "enum": ["AABB", "ABAB", "ABBA", "AAAA", "ABCB", "free"],
+              "description": "Rhyme scheme for lyrics"
+            }
+          }
+        }
+      }
+    },
+    "GenerationResponse": {
+      "type": "object",
+      "properties": {
+        "jobId": {
+          "type": "string",
+          "description": "Unique identifier for the generation job"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["queued", "processing", "completed", "failed"],
+          "description": "Current status of the job"
+        },
+        "estimatedCompletionTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Estimated completion time"
+        },
+        "message": {
+          "type": "string",
+          "description": "Additional information about the job"
+        }
+      }
+    },
+    "JobStatusResponse": {
+      "type": "object",
+      "properties": {
+        "jobId": {
+          "type": "string",
+          "description": "Unique identifier for the generation job"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["queued", "processing", "completed", "failed"],
+          "description": "Current status of the job"
+        },
+        "progress": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Progress percentage (0-100)"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the job was created"
+        },
+        "completedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the job was completed, if applicable"
+        },
+        "results": {
+          "type": "object",
+          "properties": {
+            "musicUrl": {
+              "type": "string",
+              "format": "url",
+              "description": "URL to the generated music audio file"
+            },
+            "lyricsUrl": {
+              "type": "string",
+              "format": "url",
+              "description": "URL to the generated lyrics text file"
+            },
+            "videoUrl": {
+              "type": "string",
+              "format": "url",
+              "description": "URL to the generated lyric video"
+            },
+            "waveformUrl": {
+              "type": "string",
+              "format": "url",
+              "description": "URL to the audio waveform visualization"
+            },
+            "stems": {
+              "type": "object",
+              "properties": {
+                "vocalsUrl": {
+                  "type": "string",
+                  "format": "url",
+                  "description": "URL to the isolated vocals stem"
+                },
+                "drumsUrl": {
+                  "type": "string",
+                  "format": "url",
+                  "description": "URL to the isolated drums stem"
+                },
+                "bassUrl": {
+                  "type": "string",
+                  "format": "url",
+                  "description": "URL to the isolated bass stem"
+                },
+                "instrumentsUrl": {
+                  "type": "string",
+                  "format": "url",
+                  "description": "URL to the isolated other instruments stem"
+                }
+              }
+            },
+            "metadata": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "description": "Generated title for the track"
+                },
+                "duration": {
+                  "type": "number",
+                  "description": "Duration of the generated audio in seconds"
+                },
+                "tempo": {
+                  "type": "integer",
+                  "description": "Tempo of the generated music in BPM"
+                },
+                "key": {
+                  "type": "string",
+                  "description": "Musical key of the generated track"
+                },
+                "structure": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "description": "Part type (intro, verse, etc.)"
+                      },
+                      "startTime": {
+                        "type": "number",
+                        "description": "Start time in seconds"
+                      },
+                      "endTime": {
+                        "type": "number",
+                        "description": "End time in seconds"
+                      }
+                    }
+                  }
+                },
+                "lyricsTimings": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "line": {
+                        "type": "string",
+                        "description": "Line of lyrics"
+                      },
+                      "startTime": {
+                        "type": "number",
+                        "description": "Start time in seconds"
+                      },
+                      "endTime": {
+                        "type": "number",
+                        "description": "End time in seconds"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "error": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "description": "Error code"
+            },
+            "message": {
+              "type": "string",
+              "description": "Error message"
+            },
+            "details": {
+              "type": "string",
+              "description": "Detailed error information"
+            }
+          }
+        }
+      }
+    }
+  }
+} 

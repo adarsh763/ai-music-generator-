@@ -1,0 +1,2709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LyricVision - AI-Powered Lyrics Video Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="ethical-banner.css">
+    <link rel="stylesheet" href="licensing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lottie Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js"></script>
+</head>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+    </div>
+    
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-music"></i>
+            <span>LyricVision</span>
+        </div>
+        <div class="nav-links">
+            <a href="#home-anchor" class="active">Home</a>
+            <a href="#features-anchor">Features</a>
+            <a href="#upload-anchor">Upload</a>
+            <a href="#preview-anchor">About</a>
+        </div>
+        <div class="nav-right">
+            <button class="theme-toggle" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Floating Music Player -->
+    <div class="floating-player" id="floatingPlayer">
+        <div class="floating-player-inner">
+            <div class="player-track-info">
+                <div class="track-thumbnail">
+                    <i class="fas fa-music"></i>
+                </div>
+                <div class="track-details">
+                    <h4 class="track-title">No track selected</h4>
+                    <p class="track-artist">Upload or generate music to play</p>
+                </div>
+            </div>
+            
+            <div class="player-controls-wrapper">
+                <div class="player-controls">
+                    <button class="player-control-btn" id="prevTrackBtn" disabled>
+                        <i class="fas fa-step-backward"></i>
+                    </button>
+                    <button class="player-control-btn play-btn" id="playPauseBtn" disabled>
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button class="player-control-btn" id="nextTrackBtn" disabled>
+                        <i class="fas fa-step-forward"></i>
+                    </button>
+                </div>
+                
+                <div class="player-progress">
+                    <span class="current-time">0:00</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                        <div class="progress-handle"></div>
+                    </div>
+                    <span class="total-time">0:00</span>
+                </div>
+            </div>
+            
+            <div class="player-actions">
+                <button class="player-action-btn regenerate-btn" id="regenerateBtn" disabled>
+                    <i class="fas fa-sync-alt"></i>
+                    <span>Regenerate</span>
+                </button>
+                <button class="player-action-btn toggle-player-btn" id="minimizePlayerBtn">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Minimized Player -->
+        <div class="minimized-player">
+            <div class="mini-track-info">
+                <div class="mini-thumbnail">
+                    <i class="fas fa-music"></i>
+                </div>
+                <div class="mini-details">
+                    <span class="mini-title">No track selected</span>
+                </div>
+            </div>
+            <div class="mini-controls">
+                <button class="mini-play-btn" id="miniPlayBtn">
+                    <i class="fas fa-play"></i>
+                </button>
+                <button class="mini-expand-btn" id="expandPlayerBtn">
+                    <i class="fas fa-chevron-up"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <span class="section-anchor" id="home-anchor"></span>
+        <div class="hero-background">
+            <video autoplay muted loop playsinline>
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-music-visualization-3121-large.mp4" type="video/mp4">
+            </video>
+            <div class="overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">Transform Your Lyrics into Stunning Videos</h1>
+            <p class="hero-subtitle">Create professional music videos with synchronized lyrics in minutes. Powered by AI.</p>
+            <div class="hero-cta">
+                <button class="cta-button primary" onclick="document.querySelector('#upload').scrollIntoView({ behavior: 'smooth' })">
+                    <i class="fas fa-magic"></i>
+                    Create Your Video
+                </button>
+                <button class="cta-button secondary" onclick="document.querySelector('#features').scrollIntoView({ behavior: 'smooth' })">
+                    <i class="fas fa-info-circle"></i>
+                    Learn More
+                </button>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <span class="section-anchor" id="features-anchor"></span>
+        <div class="section-header">
+            <h2>Powerful Features</h2>
+            <p class="section-subtitle">Everything you need to create amazing lyrics videos</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+                <h3>Upload Audio & Lyrics</h3>
+                <p>Simply drag and drop your audio file and lyrics. We support various formats including MP3, WAV, and TXT.</p>
+                <div class="feature-hover">
+                    <span>Learn More</span>
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <h3>Auto-Sync</h3>
+                <p>Our AI automatically synchronizes your lyrics with the audio, creating perfect timing for each line.</p>
+                <div class="feature-hover">
+                    <span>Learn More</span>
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-music"></i>
+                </div>
+                <h3>Choose Genre</h3>
+                <p>Select from various music genres to get the perfect visual style that matches your song's mood.</p>
+                <div class="feature-hover">
+                    <span>Learn More</span>
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-magic"></i>
+                </div>
+                <h3>Generate Video</h3>
+                <p>Watch as our AI creates a stunning video with synchronized lyrics and beautiful animations.</p>
+                <div class="feature-hover">
+                    <span>Learn More</span>
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Features Section -->
+    <section id="ai-features" class="ai-features">
+        <div class="ai-particles">
+            <!-- Particles will be added by JavaScript -->
+        </div>
+        <div class="section-header">
+            <h2>Powered by Advanced AI</h2>
+            <p class="section-subtitle">Our artificial intelligence transforms your music into stunning visuals</p>
+        </div>
+        <div class="ai-features-grid">
+            <div class="ai-feature-card">
+                <div class="card-shine"></div>
+                <div class="ai-feature-icon">
+                    <i class="fas fa-microphone-alt"></i>
+                </div>
+                <div class="ai-feature-content">
+                    <h3>Speech Detection</h3>
+                    <p>Our AI analyzes your audio to identify speech patterns and synchronize them with visuals.</p>
+                    <ul class="feature-details">
+                        <li><i class="fas fa-check"></i> <span>Advanced speech recognition</span></li>
+                        <li><i class="fas fa-check"></i> <span>Real-time processing</span></li>
+                        <li><i class="fas fa-check"></i> <span>Multi-language support</span></li>
+                    </ul>
+                    <div class="feature-learn-more">
+                        Learn more <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="ai-feature-card">
+                <div class="card-shine"></div>
+                <div class="ai-feature-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div class="ai-feature-content">
+                    <h3>Mood Analysis</h3>
+                    <p>The AI identifies emotional tones in your music to create matching visual effects.</p>
+                    <ul class="feature-details">
+                        <li><i class="fas fa-check"></i> <span>Emotion detection</span></li>
+                        <li><i class="fas fa-check"></i> <span>Dynamic visual effects</span></li>
+                        <li><i class="fas fa-check"></i> <span>Genre-specific styling</span></li>
+                    </ul>
+                    <div class="feature-learn-more">
+                        Learn more <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="ai-feature-card">
+                <div class="card-shine"></div>
+                <div class="ai-feature-icon">
+                    <i class="fas fa-align-center"></i>
+                </div>
+                <div class="ai-feature-content">
+                    <h3>Lyric Synchronization</h3>
+                    <p>Automatically sync your lyrics with your audio track for a perfect match every time.</p>
+                    <ul class="feature-details">
+                        <li><i class="fas fa-check"></i> <span>Word-level timing</span></li>
+                        <li><i class="fas fa-check"></i> <span>Smooth transitions</span></li>
+                        <li><i class="fas fa-check"></i> <span>Customizable effects</span></li>
+                    </ul>
+                    <div class="feature-learn-more">
+                        Learn more <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ethical AI Banner -->
+    <section class="ethical-banner">
+        <div class="ethical-container">
+            <div class="ethical-icon">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="ethical-content">
+                <h3>Ethical AI Training</h3>
+                <p>LyricVision is built using responsibly-sourced data and royalty-free datasets to ensure ethical AI development. We prioritize transparency and fair use in our training processes.</p>
+                <a href="#" class="ethical-link" id="open-license-modal">View Licensing Details <i class="fas fa-external-link-alt"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- License Modal -->
+    <div class="license-modal" id="license-modal">
+        <div class="license-modal-content">
+            <div class="license-modal-header">
+                <h3>License Certificate</h3>
+                <button class="close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="license-modal-body">
+                <div class="license-form">
+                    <p>Complete the information below to generate your royalty-free license certificate.</p>
+                    <div class="form-group">
+                        <label for="track-name">Track/Project Name</label>
+                        <input type="text" id="track-name" placeholder="Enter track or project name">
+                    </div>
+                    <div class="form-group">
+                        <label for="user-name">Your Name</label>
+                        <input type="text" id="user-name" placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="license-type">License Type</label>
+                        <select id="license-type">
+                            <option value="standard">Standard - Free for Personal Use</option>
+                            <option value="commercial">Commercial - Free for Commercial Use</option>
+                            <option value="extended">Extended - Includes Source Files</option>
+                        </select>
+                    </div>
+                    <div class="license-actions">
+                        <button id="generate-license" class="generate-license-btn">
+                            <i class="fas fa-file-download"></i> Generate License
+                        </button>
+                    </div>
+                </div>
+                <div class="license-preview" id="license-preview">
+                    <div class="license-certificate">
+                        <div class="certificate-header">
+                            <img src="https://via.placeholder.com/150x60?text=LyricVision" alt="LyricVision Logo" class="license-logo">
+                            <h2>Royalty-Free License Certificate</h2>
+                        </div>
+                        <div class="certificate-content">
+                            <p>This certifies that <span id="cert-user-name">_________________</span> has been granted a <span id="cert-license-type">Standard</span> license for:</p>
+                            <h3 id="cert-track-name">_________________</h3>
+                            <p class="certificate-date">Issue Date: <span id="cert-date">__/__/____</span></p>
+                            <div class="certificate-terms">
+                                <h4>License Terms:</h4>
+                                <ul id="license-terms-list">
+                                    <li>Videos generated using our visual elements are free from copyright claims</li>
+                                    <li>Original audio rights still belong to the original copyright holders</li>
+                                    <li>This license is non-transferable and applies only to the named individual/entity</li>
+                                </ul>
+                            </div>
+                            <div class="certificate-signature">
+                                <div class="signature-line"></div>
+                                <p>LyricVision Licensing Authority</p>
+                            </div>
+                        </div>
+                        <div class="certificate-footer">
+                            <p>License ID: <span id="license-id">LV-00000000</span></p>
+                            <p>Verify at: licensing.lyricvision.example.com</p>
+                        </div>
+                    </div>
+                    <div class="download-actions">
+                        <button id="download-license" class="download-license-btn">
+                            <i class="fas fa-download"></i> Download Certificate
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- License Modal Overlay -->
+    <div class="modal-overlay" id="license-overlay"></div>
+
+    <!-- Insights Section -->
+    <section id="insights" class="insights">
+        <div class="section-header">
+            <h2>LyricVision by the Numbers</h2>
+            <p>See how our platform is transforming music videos worldwide</p>
+        </div>
+        <div class="insights-grid">
+            <!-- Insight Cards -->
+            <div class="insight-cards">
+                <div class="insight-card">
+                    <div class="insight-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="insight-content">
+                        <h3>Global Users</h3>
+                        <div class="insight-number" data-value="25000">0</div>
+                        <p>Musicians creating videos</p>
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <div class="insight-content">
+                        <h3>Videos Created</h3>
+                        <div class="insight-number" data-value="120000">0</div>
+                        <p>Across all genres</p>
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="insight-content">
+                        <h3>Average Time Saved</h3>
+                        <div class="insight-number" data-value="85" data-suffix="%">0</div>
+                        <p>Compared to manual editing</p>
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="insight-content">
+                        <h3>Countries Reached</h3>
+                        <div class="insight-number" data-value="94" data-suffix="+">0</div>
+                        <p>Global music creators</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Charts -->
+            <div class="charts-container">
+                <div class="chart-container bar-chart-container">
+                    <h3>Performance Metrics</h3>
+                    <div class="bar-chart"></div>
+                </div>
+                <div class="chart-container line-chart-container">
+                    <h3>Monthly Video Creation</h3>
+                    <div class="line-chart"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Genre Selector Section -->
+    <section id="genre-selector" class="genre-selector">
+        <div class="section-header">
+            <h2>Choose Your Style</h2>
+            <p class="section-subtitle">Select a genre to customize your video's visual style</p>
+        </div>
+        <div class="genre-grid">
+            <div class="genre-card" data-genre="pop">
+                <div class="genre-icon">
+                    <i class="fas fa-music"></i>
+                </div>
+                <h3>Pop</h3>
+                <p>Bright, colorful, and energetic</p>
+                <div class="genre-preview">
+                    <div class="preview-overlay"></div>
+                </div>
+            </div>
+            <div class="genre-card" data-genre="edm">
+                <div class="genre-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>EDM</h3>
+                <p>Dynamic, neon, and futuristic</p>
+                <div class="genre-preview">
+                    <div class="preview-overlay"></div>
+                </div>
+            </div>
+            <div class="genre-card" data-genre="rock">
+                <div class="genre-icon">
+                    <i class="fas fa-guitar"></i>
+                </div>
+                <h3>Rock</h3>
+                <p>Gritty, bold, and powerful</p>
+                <div class="genre-preview">
+                    <div class="preview-overlay"></div>
+                </div>
+            </div>
+            <div class="genre-card" data-genre="lofi">
+                <div class="genre-icon">
+                    <i class="fas fa-coffee"></i>
+                </div>
+                <h3>Lo-Fi</h3>
+                <p>Chill, retro, and cozy</p>
+                <div class="genre-preview">
+                    <div class="preview-overlay"></div>
+                </div>
+            </div>
+            <div class="genre-card" data-genre="hiphop">
+                <div class="genre-icon">
+                    <i class="fas fa-headphones"></i>
+                </div>
+                <h3>Hip Hop</h3>
+                <p>Urban, street, and vibrant</p>
+                <div class="genre-preview">
+                    <div class="preview-overlay"></div>
+                </div>
+            </div>
+            <div class="genre-card" data-genre="classical">
+                <div class="genre-icon">
+                    <i class="fas fa-violin"></i>
+                </div>
+                <h3>Classical</h3>
+                <p>Elegant, timeless, and refined</p>
+                <div class="genre-preview">
+                    <div class="preview-overlay"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Input Methods Section -->
+    <section id="input-methods" class="input-methods">
+        <div class="section-header">
+            <h2>Multiple Ways to Create</h2>
+            <p class="section-subtitle">Choose your preferred method to generate your music video</p>
+        </div>
+        
+        <div class="input-methods-container">
+            <!-- Input Method Tabs -->
+            <div class="input-tabs">
+                <button class="input-tab-btn active" data-tab="text-prompt">
+                    <i class="fas fa-keyboard"></i>
+                    <span>Text Prompt</span>
+                </button>
+                <button class="input-tab-btn" data-tab="audio-sample">
+                    <i class="fas fa-music"></i>
+                    <span>Audio Sample</span>
+                </button>
+                <button class="input-tab-btn" data-tab="image-upload">
+                    <i class="fas fa-image"></i>
+                    <span>Image Upload</span>
+                </button>
+                <button class="input-tab-btn" data-tab="lyrics-upload">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Lyrics Upload</span>
+                </button>
+            </div>
+            
+            <!-- Input Method Content -->
+            <div class="input-content-wrapper">
+                <!-- Text Prompt Input -->
+                <div class="input-content active" id="text-prompt-content">
+                    <div class="input-icon">
+                        <i class="fas fa-keyboard"></i>
+                    </div>
+                    <h3>Generate with Text Prompt</h3>
+                    <p>Describe your music style, mood, and lyrics concept in a detailed prompt.</p>
+                    <form class="input-form">
+                        <div class="form-group">
+                            <label for="music-style">Music Style</label>
+                            <select id="music-style">
+                                <option value="">Select a style</option>
+                                <option value="pop">Pop</option>
+                                <option value="rock">Rock</option>
+                                <option value="edm">EDM</option>
+                                <option value="jazz">Jazz</option>
+                                <option value="hiphop">Hip Hop</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="mood-selector">Mood</label>
+                            <div class="mood-selectors">
+                                <button type="button" class="mood-btn" data-mood="happy">
+                                    <i class="fas fa-smile"></i>
+                                    <span>Happy</span>
+                                </button>
+                                <button type="button" class="mood-btn" data-mood="sad">
+                                    <i class="fas fa-frown"></i>
+                                    <span>Sad</span>
+                                </button>
+                                <button type="button" class="mood-btn" data-mood="energetic">
+                                    <i class="fas fa-bolt"></i>
+                                    <span>Energetic</span>
+                                </button>
+                                <button type="button" class="mood-btn" data-mood="calm">
+                                    <i class="fas fa-water"></i>
+                                    <span>Calm</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="prompt-text">Your Prompt</label>
+                            <textarea id="prompt-text" rows="4" placeholder="Describe your music idea in detail (e.g., 'A pop song about summer memories with upbeat chorus and emotional verses')"></textarea>
+                        </div>
+                        <button type="submit" class="generate-btn">
+                            <i class="fas fa-magic"></i>
+                            Generate Music
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Audio Sample Input -->
+                <div class="input-content" id="audio-sample-content">
+                    <div class="input-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>Upload Audio Sample</h3>
+                    <p>Upload a short audio clip as inspiration for your new music video.</p>
+                    <form class="input-form">
+                        <div class="dropzone">
+                            <div class="dropzone-content">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Drag & drop an audio file here or click to browse</p>
+                                <span>Supports MP3, WAV, OGG (Max 10MB)</span>
+                            </div>
+                            <input type="file" id="audio-sample-input" accept="audio/*" hidden>
+                        </div>
+                        <div class="audio-options">
+                            <div class="form-group">
+                                <label for="sample-influence">Influence Level</label>
+                                <input type="range" id="sample-influence" min="1" max="10" value="5">
+                                <div class="range-labels">
+                                    <span>Subtle</span>
+                                    <span>Strong</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="sample-section">Use for</label>
+                                <select id="sample-section">
+                                    <option value="full">Entire Song</option>
+                                    <option value="melody">Melody Only</option>
+                                    <option value="rhythm">Rhythm Only</option>
+                                    <option value="instruments">Instruments</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="generate-btn">
+                            <i class="fas fa-music"></i>
+                            Create from Sample
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Image Upload Input -->
+                <div class="input-content" id="image-upload-content">
+                    <div class="input-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <h3>Generate from Image</h3>
+                    <p>Upload an image and our AI will create music that matches its mood and style.</p>
+                    <form class="input-form">
+                        <div class="image-upload-area">
+                            <div class="upload-preview">
+                                <i class="fas fa-image"></i>
+                                <p>Preview will appear here</p>
+                            </div>
+                            <div class="upload-controls">
+                                <button type="button" class="upload-btn">
+                                    <i class="fas fa-upload"></i>
+                                    Choose Image
+                                </button>
+                                <input type="file" id="image-upload-input" accept="image/*" hidden>
+                                <p class="upload-hint">JPG, PNG, WebP (Max 5MB)</p>
+                            </div>
+                        </div>
+                        <div class="image-options">
+                            <div class="form-group">
+                                <label>Color Influence</label>
+                                <div class="checkbox-group">
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" checked>
+                                        <span class="checkmark"></span>
+                                        Colors to mood
+                                    </label>
+                                    <label class="checkbox-container">
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                        Colors to instruments
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="image-style">Music Style</label>
+                                <select id="image-style">
+                                    <option value="auto">Auto-detect</option>
+                                    <option value="electronic">Electronic</option>
+                                    <option value="acoustic">Acoustic</option>
+                                    <option value="orchestral">Orchestral</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="generate-btn">
+                            <i class="fas fa-palette"></i>
+                            Generate from Image
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Lyrics Upload Input -->
+                <div class="input-content" id="lyrics-upload-content">
+                    <div class="input-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Upload Lyrics</h3>
+                    <p>Upload your own lyrics and let our AI compose the perfect music to match.</p>
+                    <form class="input-form">
+                        <div class="form-group">
+                            <label for="lyrics-input">Enter or Paste Lyrics</label>
+                            <textarea id="lyrics-input" rows="6" placeholder="Type or paste your lyrics here..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Or Upload Lyrics File</label>
+                            <div class="file-upload-btn">
+                                <i class="fas fa-upload"></i>
+                                <span>Choose File</span>
+                                <input type="file" id="lyrics-file-input" accept=".txt,.lrc" hidden>
+                            </div>
+                            <p class="file-name" id="lyrics-filename">No file selected</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="lyrics-analysis">Lyrical Analysis</label>
+                            <div class="analysis-options">
+                                <label class="analysis-option">
+                                    <input type="radio" name="analysis" value="mood" checked>
+                                    <span class="option-text">
+                                        <i class="fas fa-smile-beam"></i>
+                                        Mood-based
+                                    </span>
+                                </label>
+                                <label class="analysis-option">
+                                    <input type="radio" name="analysis" value="theme">
+                                    <span class="option-text">
+                                        <i class="fas fa-lightbulb"></i>
+                                        Theme-based
+                                    </span>
+                                </label>
+                                <label class="analysis-option">
+                                    <input type="radio" name="analysis" value="structure">
+                                    <span class="option-text">
+                                        <i class="fas fa-columns"></i>
+                                        Structure-based
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="generate-btn">
+                            <i class="fas fa-microphone-alt"></i>
+                            Create from Lyrics
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Music Generator Card Section -->
+    <section id="music-generator" class="music-generator">
+        <div class="section-header">
+            <h2>AI Music Generator</h2>
+            <p class="section-subtitle">Create original music with just a few clicks</p>
+        </div>
+        
+        <div class="generator-card-container">
+            <div class="generator-card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>Create Your Music</h3>
+                </div>
+                
+                <form class="generator-form">
+                    <!-- Prompt Input -->
+                    <div class="form-group">
+                        <label for="music-prompt">Describe your music</label>
+                        <textarea id="music-prompt" placeholder="E.g., 'An upbeat summer pop song with catchy chorus and acoustic guitar'" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <!-- Genre Dropdown -->
+                        <div class="form-group half">
+                            <label for="music-genre">Genre</label>
+                            <div class="select-wrapper">
+                                <select id="music-genre">
+                                    <option value="">Select Genre</option>
+                                    <option value="pop">Pop</option>
+                                    <option value="rock">Rock</option>
+                                    <option value="electronic">Electronic</option>
+                                    <option value="hiphop">Hip Hop</option>
+                                    <option value="jazz">Jazz</option>
+                                    <option value="classical">Classical</option>
+                                    <option value="ambient">Ambient</option>
+                                    <option value="folk">Folk</option>
+                                </select>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Mood Dropdown -->
+                        <div class="form-group half">
+                            <label for="music-mood">Mood</label>
+                            <div class="select-wrapper">
+                                <select id="music-mood">
+                                    <option value="">Select Mood</option>
+                                    <option value="happy">Happy</option>
+                                    <option value="sad">Sad</option>
+                                    <option value="energetic">Energetic</option>
+                                    <option value="calm">Calm</option>
+                                    <option value="dark">Dark</option>
+                                    <option value="dreamy">Dreamy</option>
+                                    <option value="romantic">Romantic</option>
+                                    <option value="intense">Intense</option>
+                                </select>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tempo Slider -->
+                    <div class="form-group">
+                        <label for="music-tempo">
+                            Tempo
+                            <span class="value-display" id="tempo-value">120 BPM</span>
+                        </label>
+                        <div class="slider-container">
+                            <div class="slider-labels">
+                                <span>Slow</span>
+                                <span>Medium</span>
+                                <span>Fast</span>
+                            </div>
+                            <input type="range" id="music-tempo" min="60" max="180" value="120" class="slider">
+                        </div>
+                    </div>
+                    
+                    <!-- Instruments Multi-Select -->
+                    <div class="form-group">
+                        <label>Instruments</label>
+                        <div class="instruments-select">
+                            <div class="instrument-chip">
+                                <input type="checkbox" id="piano" checked>
+                                <label for="piano">Piano</label>
+                            </div>
+                            <div class="instrument-chip">
+                                <input type="checkbox" id="guitar">
+                                <label for="guitar">Guitar</label>
+                            </div>
+                            <div class="instrument-chip">
+                                <input type="checkbox" id="drums">
+                                <label for="drums">Drums</label>
+                            </div>
+                            <div class="instrument-chip">
+                                <input type="checkbox" id="bass">
+                                <label for="bass">Bass</label>
+                            </div>
+                            <div class="instrument-chip">
+                                <input type="checkbox" id="strings">
+                                <label for="strings">Strings</label>
+                            </div>
+                            <div class="instrument-chip">
+                                <input type="checkbox" id="synth">
+                                <label for="synth">Synth</label>
+                            </div>
+                            <div class="instrument-chip">
+                                <input type="checkbox" id="voice">
+                                <label for="voice">Voice</label>
+                            </div>
+                            <div class="instrument-chip">
+                                <input type="checkbox" id="brass">
+                                <label for="brass">Brass</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Duration Slider -->
+                    <div class="form-group">
+                        <label for="music-duration">
+                            Duration
+                            <span class="value-display" id="duration-value">1:30</span>
+                        </label>
+                        <div class="slider-container">
+                            <div class="slider-labels">
+                                <span>0:30</span>
+                                <span>1:30</span>
+                                <span>3:00</span>
+                            </div>
+                            <input type="range" id="music-duration" min="30" max="180" value="90" step="10" class="slider">
+                        </div>
+                    </div>
+                    
+                    <!-- Advanced Options Toggle -->
+                    <div class="form-group">
+                        <div class="advanced-toggle">
+                            <button type="button" class="toggle-btn" id="advanced-toggle">
+                                <i class="fas fa-cog"></i>
+                                <span>Advanced Options</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="advanced-options" id="advanced-options">
+                            <div class="option-group">
+                                <h4 class="option-title">Vocal Synthesis Options</h4>
+                                <div class="form-row">
+                                    <div class="form-col">
+                                        <div class="form-group">
+                                            <label for="vocal-emotion">Emotion</label>
+                                            <select id="vocal-emotion" class="form-control">
+                                                <option value="happy">Happy</option>
+                                                <option value="sad">Sad</option>
+                                                <option value="aggressive">Aggressive</option>
+                                                <option value="calm">Calm</option>
+                                                <option value="energetic">Energetic</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-col">
+                                        <div class="form-group">
+                                            <label for="vocal-language">Language</label>
+                                            <select id="vocal-language" class="form-control">
+                                                <option value="english">English</option>
+                                                <option value="hindi">Hindi</option>
+                                                <option value="spanish">Spanish</option>
+                                                <option value="french">French</option>
+                                                <option value="japanese">Japanese</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-col">
+                                        <div class="form-group">
+                                            <label for="vocal-gender">Voice Gender</label>
+                                            <select id="vocal-gender" class="form-control">
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                                <option value="neutral">Neutral</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-col">
+                                        <div class="form-group">
+                                            <div class="toggle-container">
+                                                <label for="ai-vocals">AI-Generated Vocals</label>
+                                                <label class="toggle-switch">
+                                                    <input type="checkbox" id="ai-vocals">
+                                                    <span class="toggle-slider"></span>
+                                                </label>
+                                            </div>
+                                            <p class="form-prompt">Enable to generate AI vocals from your lyrics</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="option-group">
+                                <!-- Structure Dropdown -->
+                                <div class="form-group">
+                                    <label for="music-structure">Song Structure</label>
+                                    <div class="select-wrapper">
+                                        <select id="music-structure">
+                                            <option value="standard">Standard (Verse-Chorus-Verse-Chorus)</option>
+                                            <option value="abac">ABAC Pattern</option>
+                                            <option value="loop">Loop-based</option>
+                                            <option value="custom">Custom</option>
+                                        </select>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                
+                                <!-- Key Dropdown -->
+                                <div class="form-row">
+                                    <div class="form-group half">
+                                        <label for="music-key">Key</label>
+                                        <div class="select-wrapper">
+                                            <select id="music-key">
+                                                <option value="C">C</option>
+                                                <option value="C#">C#</option>
+                                                <option value="D">D</option>
+                                                <option value="D#">D#</option>
+                                                <option value="E">E</option>
+                                                <option value="F">F</option>
+                                                <option value="F#">F#</option>
+                                                <option value="G">G</option>
+                                                <option value="G#">G#</option>
+                                                <option value="A">A</option>
+                                                <option value="A#">A#</option>
+                                                <option value="B">B</option>
+                                            </select>
+                                            <i class="fas fa-chevron-down"></i>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Scale Dropdown -->
+                                    <div class="form-group half">
+                                        <label for="music-scale">Scale</label>
+                                        <div class="select-wrapper">
+                                            <select id="music-scale">
+                                                <option value="major">Major</option>
+                                                <option value="minor">Minor</option>
+                                                <option value="pentatonic">Pentatonic</option>
+                                                <option value="blues">Blues</option>
+                                                <option value="dorian">Dorian</option>
+                                                <option value="mixolydian">Mixolydian</option>
+                                            </select>
+                                            <i class="fas fa-chevron-down"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="song-structure-container">
+                                <h4 class="option-title">Song Structure</h4>
+                                <p class="option-description">Define and arrange your song structure by dragging sections into the timeline.</p>
+                                
+                                <div class="song-parts-container">
+                                    <div class="song-parts-palette">
+                                        <div class="song-part-item" draggable="true" data-part-type="intro">
+                                            <i class="fas fa-sign-in-alt"></i>
+                                            <span>Intro</span>
+                                        </div>
+                                        <div class="song-part-item" draggable="true" data-part-type="verse">
+                                            <i class="fas fa-align-left"></i>
+                                            <span>Verse</span>
+                                        </div>
+                                        <div class="song-part-item" draggable="true" data-part-type="chorus">
+                                            <i class="fas fa-star"></i>
+                                            <span>Chorus</span>
+                                        </div>
+                                        <div class="song-part-item" draggable="true" data-part-type="bridge">
+                                            <i class="fas fa-exchange-alt"></i>
+                                            <span>Bridge</span>
+                                        </div>
+                                        <div class="song-part-item" draggable="true" data-part-type="outro">
+                                            <i class="fas fa-sign-out-alt"></i>
+                                            <span>Outro</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="song-structure-timeline">
+                                        <div class="timeline-header">
+                                            <span>Timeline</span>
+                                            <button id="clear-timeline" class="clear-btn">
+                                                <i class="fas fa-trash-alt"></i> Clear
+                                            </button>
+                                        </div>
+                                        <div class="timeline-container" id="song-timeline">
+                                            <div class="timeline-placeholder">Drag song parts here to create your structure</div>
+                                            <!-- Parts will be added here by JavaScript -->
+                                        </div>
+                                        <div class="timeline-footer">
+                                            <div class="timeline-duration">
+                                                <span>Total Duration: </span>
+                                                <span id="total-duration">0:00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="part-settings-panel" id="part-settings">
+                                    <h5>Section Settings</h5>
+                                    <div class="setting">
+                                        <label for="part-duration">Duration (seconds)</label>
+                                        <input type="number" id="part-duration" min="10" max="120" value="30" class="form-control">
+                                    </div>
+                                    <div class="setting">
+                                        <label for="part-intensity">Intensity</label>
+                                        <input type="range" id="part-intensity" min="1" max="10" value="5" class="slider">
+                                        <div class="slider-value"><span id="intensity-value">5</span>/10</div>
+                                    </div>
+                                    <div class="setting">
+                                        <label for="part-variation">Variation</label>
+                                        <select id="part-variation" class="form-control">
+                                            <option value="standard">Standard</option>
+                                            <option value="melodic">Melodic Focus</option>
+                                            <option value="rhythmic">Rhythmic Focus</option>
+                                            <option value="ambient">Ambient</option>
+                                            <option value="intense">Intense</option>
+                                        </select>
+                                    </div>
+                                    <button id="apply-settings" class="apply-btn">Apply</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Generate Button -->
+                    <button type="submit" class="generate-music-btn">
+                        <i class="fas fa-wand-magic-sparkles"></i>
+                        Generate Music
+                    </button>
+                    
+                    <!-- Generation Status (hidden by default) -->
+                    <div class="generation-status" id="generation-status">
+                        <div class="status-spinner">
+                            <div class="spinner-circle"></div>
+                        </div>
+                        <div class="status-text">
+                            <p class="status-message">Creating your music...</p>
+                            <div class="status-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0%"></div>
+                                </div>
+                                <span class="progress-percentage">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="generator-result" id="generator-result">
+                <div class="result-empty" id="result-empty">
+                    <i class="fas fa-music"></i>
+                    <p>Your generated music will appear here</p>
+                </div>
+                
+                <div id="result-loading" style="display: none;">
+                    <!-- Track skeleton will be inserted here by JavaScript -->
+                </div>
+                
+                <div id="result-content" style="display: none;">
+                    <!-- Actual generated content will be inserted here by JavaScript -->
+                </div>
+                
+                <!-- This will be populated by JavaScript when music is generated -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Vocal Remover Section -->
+    <section id="vocal-remover" class="vocal-remover">
+        <div class="section-header">
+            <h2>Vocal Remover</h2>
+            <p class="section-subtitle">Separate vocals from background music with AI</p>
+        </div>
+        
+        <div class="vocal-remover-container">
+            <div class="vocal-remover-card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-wave-square"></i>
+                    </div>
+                    <h3>Audio Separation Tool</h3>
+                </div>
+                
+                <div class="upload-area">
+                    <div class="dropzone" id="vocal-remover-dropzone">
+                        <div class="dropzone-content">
+                            <i class="fas fa-music"></i>
+                            <p>Drag & drop your song here or click to browse</p>
+                            <span>Supports MP3, WAV, OGG (Max 10MB)</span>
+                        </div>
+                        <input type="file" id="vocal-remover-input" accept="audio/*" hidden>
+                    </div>
+                    
+                    <div class="file-info" id="vocal-remover-file-info">
+                        <div class="empty-state">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>No file selected</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="separation-options">
+                    <h4>Separation Type</h4>
+                    <div class="option-tabs">
+                        <button class="option-tab-btn active" data-option="vocals">
+                            <i class="fas fa-microphone"></i>
+                            <span>Isolate Vocals</span>
+                        </button>
+                        <button class="option-tab-btn" data-option="instrumental">
+                            <i class="fas fa-guitar"></i>
+                            <span>Isolate Instrumental</span>
+                        </button>
+                    </div>
+                    
+                    <div class="advanced-settings">
+                        <div class="settings-toggle">
+                            <button type="button" id="separation-settings-toggle">
+                                <i class="fas fa-sliders-h"></i>
+                                <span>Advanced Settings</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="settings-content" id="separation-settings">
+                            <div class="setting-group">
+                                <label for="separation-quality">
+                                    AI Model Quality
+                                    <span class="value-display" id="quality-value">Medium</span>
+                                </label>
+                                <div class="slider-container">
+                                    <div class="slider-labels">
+                                        <span>Low</span>
+                                        <span>Medium</span>
+                                        <span>High</span>
+                                    </div>
+                                    <input type="range" id="separation-quality" min="1" max="3" value="2" class="slider">
+                                </div>
+                                <p class="setting-note">Higher quality requires more processing time</p>
+                            </div>
+                            
+                            <div class="setting-group">
+                                <label>Additional Options</label>
+                                <div class="checkbox-group">
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" id="enhance-vocals">
+                                        <span class="checkmark"></span>
+                                        Enhance vocal clarity
+                                    </label>
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" id="reduce-artifacts">
+                                        <span class="checkmark"></span>
+                                        Reduce artifacts
+                                    </label>
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" id="preserve-reverb">
+                                        <span class="checkmark"></span>
+                                        Preserve reverb/ambience
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button id="process-audio-btn" class="process-btn" disabled>
+                        <span class="btn-text">Process Audio</span>
+                        <div class="spinner">
+                            <div class="spinner-circle"></div>
+                        </div>
+                    </button>
+                </div>
+                
+                <div class="processing-status" id="processing-status">
+                    <div class="status-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-percentage">0%</span>
+                    </div>
+                    <p class="status-message">Initializing AI model...</p>
+                </div>
+            </div>
+            
+            <div class="results-container" id="separation-results">
+                <div class="results-empty">
+                    <i class="fas fa-waveform"></i>
+                    <p>Processed audio will appear here</p>
+                </div>
+                
+                <div class="results-content hidden">
+                    <h3 class="results-title">Separation Results</h3>
+                    
+                    <div class="result-item">
+                        <div class="result-header vocal">
+                            <i class="fas fa-microphone"></i>
+                            <h4>Vocals Track</h4>
+                        </div>
+                        <div class="audio-player">
+                            <button class="player-button">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="waveform-container">
+                                <div class="waveform" id="vocals-waveform"></div>
+                                <div class="time-display">
+                                    <span class="current-time">0:00</span>
+                                    <span class="duration">0:00</span>
+                                </div>
+                            </div>
+                            <div class="player-actions">
+                                <button class="action-button download">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                                <div class="volume-control">
+                                    <button class="volume-button">
+                                        <i class="fas fa-volume-up"></i>
+                                    </button>
+                                    <div class="volume-slider-container">
+                                        <input type="range" class="volume-slider" min="0" max="100" value="100">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <div class="result-header instrumental">
+                            <i class="fas fa-guitar"></i>
+                            <h4>Instrumental Track</h4>
+                        </div>
+                        <div class="audio-player">
+                            <button class="player-button">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="waveform-container">
+                                <div class="waveform" id="instrumental-waveform"></div>
+                                <div class="time-display">
+                                    <span class="current-time">0:00</span>
+                                    <span class="duration">0:00</span>
+                                </div>
+                            </div>
+                            <div class="player-actions">
+                                <button class="action-button download">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                                <div class="volume-control">
+                                    <button class="volume-button">
+                                        <i class="fas fa-volume-up"></i>
+                                    </button>
+                                    <div class="volume-slider-container">
+                                        <input type="range" class="volume-slider" min="0" max="100" value="100">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="result-comparison">
+                        <h4>Compare Tracks</h4>
+                        <div class="comparison-controls">
+                            <button class="comparison-button" data-track="original">
+                                <i class="fas fa-music"></i>
+                                <span>Original</span>
+                            </button>
+                            <button class="comparison-button" data-track="vocals">
+                                <i class="fas fa-microphone"></i>
+                                <span>Vocals</span>
+                            </button>
+                            <button class="comparison-button" data-track="instrumental">
+                                <i class="fas fa-guitar"></i>
+                                <span>Instrumental</span>
+                            </button>
+                        </div>
+                        <div class="comparison-waveform" id="comparison-waveform"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Style Transfer Section -->
+    <section id="style-transfer" class="style-transfer">
+        <div class="section-header">
+            <h2>Music Style Transfer</h2>
+            <p class="section-subtitle">Transform your tracks into different musical genres with AI</p>
+        </div>
+        
+        <div class="style-transfer-container">
+            <div class="style-transfer-card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Genre Transformation</h3>
+                </div>
+                
+                <div class="upload-area">
+                    <div class="dropzone" id="style-transfer-dropzone">
+                        <input type="file" id="style-transfer-file-input" accept="audio/*" hidden>
+                        <div class="dropzone-content">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop your audio file or click to browse</p>
+                            <span>Supports MP3, WAV (Max 20MB)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="file-info" id="style-transfer-file-info">
+                        <div class="file-details">
+                            <div class="file-icon">
+                                <i class="fas fa-music"></i>
+                            </div>
+                            <div class="file-meta">
+                                <div class="file-name" id="style-transfer-file-name">filename.mp3</div>
+                                <div class="file-size" id="style-transfer-file-size">0 MB</div>
+                            </div>
+                            <div class="file-actions">
+                                <button class="file-action-btn" id="style-transfer-remove-btn">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="style-options-container" id="style-transfer-options">
+                    <div class="style-options-header">
+                        <h4>Choose Target Genre</h4>
+                        <p>Select the musical style you want to apply to your track</p>
+                    </div>
+                    
+                    <div class="style-options-grid">
+                        <div class="style-option" data-style="electronic">
+                            <div class="style-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div class="style-label">Electronic</div>
+                            <div class="style-preview">
+                                <div class="waveform-preview electronic-preview"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="style-option" data-style="orchestral">
+                            <div class="style-icon">
+                                <i class="fas fa-scroll"></i>
+                            </div>
+                            <div class="style-label">Orchestral</div>
+                            <div class="style-preview">
+                                <div class="waveform-preview orchestral-preview"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="style-option" data-style="rock">
+                            <div class="style-icon">
+                                <i class="fas fa-guitar"></i>
+                            </div>
+                            <div class="style-label">Rock</div>
+                            <div class="style-preview">
+                                <div class="waveform-preview rock-preview"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="style-option" data-style="jazz">
+                            <div class="style-icon">
+                                <i class="fas fa-music"></i>
+                            </div>
+                            <div class="style-label">Jazz</div>
+                            <div class="style-preview">
+                                <div class="waveform-preview jazz-preview"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="style-option" data-style="lofi">
+                            <div class="style-icon">
+                                <i class="fas fa-headphones"></i>
+                            </div>
+                            <div class="style-label">Lo-Fi</div>
+                            <div class="style-preview">
+                                <div class="waveform-preview lofi-preview"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="style-option" data-style="hiphop">
+                            <div class="style-icon">
+                                <i class="fas fa-record-vinyl"></i>
+                            </div>
+                            <div class="style-label">Hip Hop</div>
+                            <div class="style-preview">
+                                <div class="waveform-preview hiphop-preview"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="style-settings" id="style-settings">
+                    <div class="settings-header">
+                        <h4>Style Transfer Settings</h4>
+                        <button class="toggle-settings-btn" id="toggle-style-settings">
+                            <span>Advanced Settings</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="advanced-style-settings" id="advanced-style-settings">
+                        <div class="setting-group">
+                            <label>Style Intensity</label>
+                            <div class="slider-container">
+                                <input type="range" min="0" max="100" value="75" class="slider" id="style-intensity-slider">
+                                <div class="value-display">
+                                    <span id="style-intensity-value">75%</span>
+                                </div>
+                            </div>
+                            <p class="setting-note">How strongly the new style will be applied</p>
+                        </div>
+                        
+                        <div class="setting-group">
+                            <label>Preserve Original</label>
+                            <div class="slider-container">
+                                <input type="range" min="0" max="100" value="50" class="slider" id="preserve-original-slider">
+                                <div class="value-display">
+                                    <span id="preserve-original-value">50%</span>
+                                </div>
+                            </div>
+                            <p class="setting-note">How much of the original character to keep</p>
+                        </div>
+                        
+                        <div class="setting-group">
+                            <label>Output Quality</label>
+                            <div class="quality-options">
+                                <label class="quality-option">
+                                    <input type="radio" name="quality" value="standard" checked>
+                                    <span class="radio-label">Standard (256kbps)</span>
+                                </label>
+                                <label class="quality-option">
+                                    <input type="radio" name="quality" value="high">
+                                    <span class="radio-label">High (320kbps)</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="transform-actions">
+                    <button class="transform-btn" id="transform-btn">
+                        <span class="btn-text">Transform Track</span>
+                        <div class="spinner">
+                            <div class="spinner-circle"></div>
+                        </div>
+                    </button>
+                </div>
+                
+                <div class="transform-status" id="transform-status">
+                    <div class="status-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="transform-progress-fill"></div>
+                        </div>
+                        <div class="progress-percentage" id="transform-progress-percentage">0%</div>
+                    </div>
+                    <div class="status-message" id="transform-status-message">Preparing...</div>
+                </div>
+                
+                <div class="transform-result" id="transform-result">
+                    <div class="result-header">
+                        <h4>Transformed Track</h4>
+                        <div class="result-meta">
+                            <span id="transform-result-style">Genre: Electronic</span>
+                            <span id="transform-result-duration">Duration: 3:42</span>
+                        </div>
+                    </div>
+                    
+                    <div class="comparison-player">
+                        <div class="comparison-controls">
+                            <button class="comparison-button active" data-player="original">
+                                <i class="fas fa-music"></i>
+                                <span>Original</span>
+                            </button>
+                            <button class="comparison-button" data-player="transformed">
+                                <i class="fas fa-magic"></i>
+                                <span>Transformed</span>
+                            </button>
+                        </div>
+                        
+                        <div class="audio-player">
+                            <div class="player-controls">
+                                <button class="player-button" id="comparison-play-btn">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                <div class="waveform-container">
+                                    <div class="waveform" id="comparison-waveform">
+                                        <!-- Waveform will be generated by JS -->
+                                    </div>
+                                </div>
+                                <div class="time-display">
+                                    <span id="comparison-current-time">0:00</span> / 
+                                    <span id="comparison-total-time">0:00</span>
+                                </div>
+                            </div>
+                            
+                            <div class="player-actions">
+                                <button class="action-button" id="download-transformed-btn">
+                                    <i class="fas fa-download"></i>
+                                    <span>Download</span>
+                                </button>
+                                <div class="volume-control">
+                                    <button class="volume-button">
+                                        <i class="fas fa-volume-up"></i>
+                                    </button>
+                                    <div class="volume-slider-container">
+                                        <input type="range" min="0" max="100" value="100" class="volume-slider" id="comparison-volume">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Collaboration Section -->
+    <section id="collaboration" class="collaboration">
+        <div class="section-header">
+            <h2>Team Collaboration</h2>
+            <p class="section-subtitle">Work together with your team to create the perfect track</p>
+        </div>
+        
+        <div class="collaboration-container">
+            <div class="collaboration-card">
+                <div class="collaboration-header">
+                    <div class="collab-tabs">
+                        <button class="collab-tab active" data-tab="collaborators">
+                            <i class="fas fa-users"></i>
+                            <span>Collaborators</span>
+                        </button>
+                        <button class="collab-tab" data-tab="comments">
+                            <i class="fas fa-comments"></i>
+                            <span>Comments</span>
+                            <span class="comment-count">3</span>
+                        </button>
+                        <button class="collab-tab" data-tab="activity">
+                            <i class="fas fa-history"></i>
+                            <span>Activity</span>
+                        </button>
+                    </div>
+                    
+                    <button class="invite-btn" id="invite-collaborator-btn">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Invite</span>
+                    </button>
+                </div>
+                
+                <div class="collaboration-content">
+                    <!-- Collaborators Tab -->
+                    <div class="collab-tab-content active" id="collaborators-tab">
+                        <div class="collaborator-list">
+                            <div class="collaborator owner">
+                                <div class="collaborator-avatar">
+                                    <img src="https://ui-avatars.com/api/?name=You&background=6C5CE7&color=fff" alt="Your avatar">
+                                    <span class="status-indicator online"></span>
+                                </div>
+                                <div class="collaborator-info">
+                                    <div class="collaborator-name">You <span class="role owner">Owner</span></div>
+                                    <div class="collaborator-email">you@example.com</div>
+                                </div>
+                                <div class="collaborator-actions">
+                                    <button class="action-btn" disabled>
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="collaborator">
+                                <div class="collaborator-avatar">
+                                    <img src="https://ui-avatars.com/api/?name=Alex+Smith&background=4385F4&color=fff" alt="Alex's avatar">
+                                    <span class="status-indicator offline"></span>
+                                </div>
+                                <div class="collaborator-info">
+                                    <div class="collaborator-name">Alex Smith <span class="role editor">Editor</span></div>
+                                    <div class="collaborator-email">alex@example.com</div>
+                                </div>
+                                <div class="collaborator-actions">
+                                    <button class="action-btn">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="collaborator">
+                                <div class="collaborator-avatar">
+                                    <img src="https://ui-avatars.com/api/?name=Jamie+Doe&background=F56565&color=fff" alt="Jamie's avatar">
+                                    <span class="status-indicator online"></span>
+                                </div>
+                                <div class="collaborator-info">
+                                    <div class="collaborator-name">Jamie Doe <span class="role viewer">Viewer</span></div>
+                                    <div class="collaborator-email">jamie@example.com</div>
+                                </div>
+                                <div class="collaborator-actions">
+                                    <button class="action-btn">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="pending-invitation">
+                                <div class="pending-avatar">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="pending-info">
+                                    <div class="pending-email">taylor@example.com</div>
+                                    <div class="pending-status">Invitation sent <span class="pending-time">2 hours ago</span></div>
+                                </div>
+                                <div class="pending-actions">
+                                    <button class="resend-btn">
+                                        <i class="fas fa-redo-alt"></i>
+                                        <span>Resend</span>
+                                    </button>
+                                    <button class="cancel-btn">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="permission-settings">
+                            <h3>Permission Settings</h3>
+                            <div class="permission-option">
+                                <label class="permission-label">
+                                    <input type="checkbox" checked>
+                                    <span>Allow editors to invite others</span>
+                                </label>
+                            </div>
+                            <div class="permission-option">
+                                <label class="permission-label">
+                                    <input type="checkbox" checked>
+                                    <span>Allow comments from viewers</span>
+                                </label>
+                            </div>
+                            <div class="permission-option">
+                                <label class="permission-label">
+                                    <input type="checkbox">
+                                    <span>Require approval for edits</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Comments Tab -->
+                    <div class="collab-tab-content" id="comments-tab">
+                        <div class="comments-container">
+                            <div class="comment">
+                                <div class="comment-avatar">
+                                    <img src="https://ui-avatars.com/api/?name=Alex+Smith&background=4385F4&color=fff" alt="Alex's avatar">
+                                </div>
+                                <div class="comment-content">
+                                    <div class="comment-header">
+                                        <div class="comment-author">Alex Smith</div>
+                                        <div class="comment-time">Yesterday at 2:45 PM</div>
+                                    </div>
+                                    <div class="comment-text">
+                                        The vocals sound great, but I think we should boost the bass around the chorus section to give it more impact.
+                                    </div>
+                                    <div class="comment-actions">
+                                        <button class="comment-reply-btn">Reply</button>
+                                        <button class="comment-react-btn">
+                                            <i class="far fa-thumbs-up"></i>
+                                            <span>2</span>
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="comment-replies">
+                                        <div class="comment reply">
+                                            <div class="comment-avatar">
+                                                <img src="https://ui-avatars.com/api/?name=You&background=6C5CE7&color=fff" alt="Your avatar">
+                                            </div>
+                                            <div class="comment-content">
+                                                <div class="comment-header">
+                                                    <div class="comment-author">You</div>
+                                                    <div class="comment-time">Yesterday at 3:12 PM</div>
+                                                </div>
+                                                <div class="comment-text">
+                                                    Good point! I'll try adding a slight boost at 80Hz and see how it sounds.
+                                                </div>
+                                                <div class="comment-actions">
+                                                    <button class="comment-reply-btn">Reply</button>
+                                                    <button class="comment-react-btn active">
+                                                        <i class="fas fa-thumbs-up"></i>
+                                                        <span>1</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="comment">
+                                <div class="comment-avatar">
+                                    <img src="https://ui-avatars.com/api/?name=Jamie+Doe&background=F56565&color=fff" alt="Jamie's avatar">
+                                </div>
+                                <div class="comment-content">
+                                    <div class="comment-header">
+                                        <div class="comment-author">Jamie Doe</div>
+                                        <div class="comment-time">Today at 9:30 AM</div>
+                                    </div>
+                                    <div class="comment-text">
+                                        I think the intro is a bit too long. Maybe we could cut it down to 15 seconds?
+                                    </div>
+                                    <div class="comment-actions">
+                                        <button class="comment-reply-btn">Reply</button>
+                                        <button class="comment-react-btn">
+                                            <i class="far fa-thumbs-up"></i>
+                                            <span>0</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="comment with-timestamp">
+                                <div class="comment-avatar">
+                                    <img src="https://ui-avatars.com/api/?name=Jamie+Doe&background=F56565&color=fff" alt="Jamie's avatar">
+                                </div>
+                                <div class="comment-content">
+                                    <div class="comment-header">
+                                        <div class="comment-author">Jamie Doe</div>
+                                        <div class="comment-time">Today at 9:35 AM</div>
+                                    </div>
+                                    <div class="comment-text">
+                                        The reverb on the vocals at this timestamp sounds too wet. Could we dry it up a bit?
+                                    </div>
+                                    <div class="comment-timestamp">
+                                        <i class="fas fa-clock"></i>
+                                        <span>01:24</span>
+                                    </div>
+                                    <div class="comment-actions">
+                                        <button class="comment-reply-btn">Reply</button>
+                                        <button class="comment-react-btn">
+                                            <i class="far fa-thumbs-up"></i>
+                                            <span>0</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="comment-form">
+                            <div class="comment-avatar">
+                                <img src="https://ui-avatars.com/api/?name=You&background=6C5CE7&color=fff" alt="Your avatar">
+                            </div>
+                            <div class="comment-input-container">
+                                <textarea class="comment-input" placeholder="Add a comment..."></textarea>
+                                <div class="comment-tools">
+                                    <button class="comment-tool-btn" title="Add timestamp">
+                                        <i class="fas fa-clock"></i>
+                                    </button>
+                                    <button class="comment-tool-btn" title="Attach file">
+                                        <i class="fas fa-paperclip"></i>
+                                    </button>
+                                    <button class="comment-tool-btn" title="Add emoji">
+                                        <i class="far fa-smile"></i>
+                                    </button>
+                                </div>
+                                <button class="comment-submit-btn">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Activity Tab -->
+                    <div class="collab-tab-content" id="activity-tab">
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon edit">
+                                    <i class="fas fa-edit"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-text"><strong>You</strong> edited the track</div>
+                                    <div class="activity-time">10 minutes ago</div>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon comment">
+                                    <i class="fas fa-comment"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-text"><strong>Jamie Doe</strong> added a comment</div>
+                                    <div class="activity-time">Today at 9:35 AM</div>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon comment">
+                                    <i class="fas fa-comment"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-text"><strong>Jamie Doe</strong> added a comment</div>
+                                    <div class="activity-time">Today at 9:30 AM</div>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon transform">
+                                    <i class="fas fa-magic"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-text"><strong>You</strong> transformed the track to <strong>Rock</strong> style</div>
+                                    <div class="activity-time">Yesterday at 4:15 PM</div>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon reply">
+                                    <i class="fas fa-reply"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-text"><strong>You</strong> replied to <strong>Alex Smith</strong>'s comment</div>
+                                    <div class="activity-time">Yesterday at 3:12 PM</div>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon comment">
+                                    <i class="fas fa-comment"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-text"><strong>Alex Smith</strong> added a comment</div>
+                                    <div class="activity-time">Yesterday at 2:45 PM</div>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon upload">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-text"><strong>You</strong> uploaded a new track</div>
+                                    <div class="activity-time">Yesterday at 2:30 PM</div>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon invite">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-text"><strong>You</strong> invited <strong>taylor@example.com</strong></div>
+                                    <div class="activity-time">Yesterday at 1:15 PM</div>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon join">
+                                    <i class="fas fa-user-check"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-text"><strong>Jamie Doe</strong> joined the project</div>
+                                    <div class="activity-time">Yesterday at 11:30 AM</div>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon join">
+                                    <i class="fas fa-user-check"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-text"><strong>Alex Smith</strong> joined the project</div>
+                                    <div class="activity-time">Yesterday at 10:45 AM</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Invite Modal -->
+        <div class="modal-overlay" id="invite-modal-overlay">
+            <div class="invite-modal" id="invite-modal">
+                <div class="modal-header">
+                    <h3>Invite Collaborators</h3>
+                    <button class="modal-close" id="close-invite-modal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="modal-content">
+                    <div class="invite-form">
+                        <div class="invite-input-group">
+                            <label for="invite-email">Email addresses</label>
+                            <div class="invite-input-container">
+                                <input type="email" id="invite-email" placeholder="Enter email addresses separated by commas">
+                            </div>
+                        </div>
+                        
+                        <div class="invite-input-group">
+                            <label for="invite-role">Role</label>
+                            <div class="role-select-container">
+                                <select id="invite-role">
+                                    <option value="editor">Editor (can edit tracks and add comments)</option>
+                                    <option value="viewer">Viewer (can only view and comment)</option>
+                                </select>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="invite-input-group">
+                            <label for="invite-message">Add a message (optional)</label>
+                            <textarea id="invite-message" placeholder="Enter a message to include in the invitation email..."></textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-footer">
+                    <button class="modal-cancel" id="cancel-invite">Cancel</button>
+                    <button class="modal-submit" id="send-invite">
+                        <i class="fas fa-paper-plane"></i>
+                        <span>Send Invitation</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upload Section -->
+    <section id="upload" class="upload">
+        <span class="section-anchor" id="upload-anchor"></span>
+        <div class="upload-container">
+            <div class="section-header">
+                <h2>Create Your Video</h2>
+                <p class="section-subtitle">Upload your audio and lyrics to generate a stunning video</p>
+            </div>
+            <form class="upload-form" id="video-form">
+                <div class="form-group">
+                    <div class="upload-box" id="audio-upload">
+                        <div class="upload-icon">
+                            <i class="fas fa-music"></i>
+                            <div class="lottie-upload-animation" id="audio-upload-animation"></div>
+                        </div>
+                        <h3>Upload Audio</h3>
+                        <p>Drag and drop your audio file here or click to browse</p>
+                        <input type="file" id="audio-file" accept="audio/*" hidden>
+                        <div class="file-info" id="audio-info"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="upload-box" id="lyrics-upload">
+                        <div class="upload-icon">
+                            <i class="fas fa-file-alt"></i>
+                            <div class="lottie-upload-animation" id="lyrics-upload-animation"></div>
+                        </div>
+                        <h3>Upload Lyrics</h3>
+                        <p>Drag and drop your lyrics file here or click to browse</p>
+                        <input type="file" id="lyrics-file" accept=".txt,.lrc" hidden>
+                        <div class="file-info" id="lyrics-info"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="genre">Select Genre</label>
+                    <div class="select-wrapper">
+                        <select id="genre" required>
+                            <option value="">Choose a genre</option>
+                            <option value="pop">Pop</option>
+                            <option value="rock">Rock</option>
+                            <option value="edm">EDM</option>
+                            <option value="lofi">Lo-Fi</option>
+                            <option value="hiphop">Hip Hop</option>
+                            <option value="classical">Classical</option>
+                        </select>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+                <button type="submit" class="generate-button">
+                    <span class="button-text">Generate Video</span>
+                    <div class="spinner hidden">
+                        <div class="spinner-circle"></div>
+                    </div>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Preview Section -->
+    <section id="preview" class="preview">
+        <span class="section-anchor" id="preview-anchor"></span>
+        <div class="preview-container">
+            <div class="section-header">
+                <h2>Your Video Preview</h2>
+                <p class="section-subtitle">Watch your generated video and download it when ready</p>
+            </div>
+            <div class="video-player" id="video-player-container">
+                <!-- Video content will be loaded here, with skeleton shown during loading -->
+                <div class="video-wrapper">
+                    <video id="preview-video" controls>
+                        <source src="" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-overlay">
+                        <div class="video-title">
+                            <h3>Your Song Title</h3>
+                            <p class="video-subtitle">Artist Name</p>
+                        </div>
+                        <div class="video-controls">
+                            <button class="control-button play-button" aria-label="Play/Pause">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="progress-bar">
+                                <div class="progress"></div>
+                                <div class="time-display">
+                                    <span class="current-time">0:00</span>
+                                    <span class="duration">0:00</span>
+                                </div>
+                            </div>
+                            <button class="control-button volume-button" aria-label="Volume">
+                                <i class="fas fa-volume-up"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="video-actions">
+                    <button class="action-button download-button">
+                        <i class="fas fa-download"></i>
+                        <span>Download Video</span>
+                    </button>
+                    <button class="action-button share-button">
+                        <i class="fas fa-share-alt"></i>
+                        <span>Share</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Insights Section -->
+    <section id="insights" class="insights">
+        <div class="section-header">
+            <h2>Insights Dashboard</h2>
+            <p class="section-subtitle">See how creators are using LyricVision</p>
+        </div>
+        <div class="insights-container">
+            <div class="insights-cards">
+                <div class="insight-card">
+                    <div class="insight-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <div class="insight-info">
+                        <h3>Most Used Genre</h3>
+                        <div class="insight-value" data-value="Pop">Pop</div>
+                        <div class="insight-trend positive">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>12%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="insight-info">
+                        <h3>Avg. Sync Time</h3>
+                        <div class="insight-value" data-value="10">10s</div>
+                        <div class="insight-trend negative">
+                            <i class="fas fa-arrow-down"></i>
+                            <span>5%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <div class="insight-info">
+                        <h3>Videos Created</h3>
+                        <div class="insight-value" data-value="1.2K">1.2K</div>
+                        <div class="insight-trend positive">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>24%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-icon">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <div class="insight-info">
+                        <h3>Words Synced</h3>
+                        <div class="insight-value" data-value="256K">256K</div>
+                        <div class="insight-trend positive">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>18%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="insights-charts">
+                <div class="chart-container">
+                    <h3>Popular Genres</h3>
+                    <div class="bar-chart">
+                        <div class="chart-legend">
+                            <div class="legend-item">
+                                <span class="legend-color pop"></span>
+                                <span>Pop</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color edm"></span>
+                                <span>EDM</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color rock"></span>
+                                <span>Rock</span>
+                            </div>
+                        </div>
+                        <div class="chart-bars">
+                            <div class="bar-item">
+                                <div class="bar-label">Pop</div>
+                                <div class="bar-track">
+                                    <div class="bar-fill" data-percentage="65" style="width: 0%;"></div>
+                                </div>
+                                <div class="bar-value">65%</div>
+                            </div>
+                            <div class="bar-item">
+                                <div class="bar-label">EDM</div>
+                                <div class="bar-track">
+                                    <div class="bar-fill" data-percentage="48" style="width: 0%;"></div>
+                                </div>
+                                <div class="bar-value">48%</div>
+                            </div>
+                            <div class="bar-item">
+                                <div class="bar-label">Rock</div>
+                                <div class="bar-track">
+                                    <div class="bar-fill" data-percentage="37" style="width: 0%;"></div>
+                                </div>
+                                <div class="bar-value">37%</div>
+                            </div>
+                            <div class="bar-item">
+                                <div class="bar-label">Lo-Fi</div>
+                                <div class="bar-track">
+                                    <div class="bar-fill" data-percentage="29" style="width: 0%;"></div>
+                                </div>
+                                <div class="bar-value">29%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <h3>Weekly Activity</h3>
+                    <div class="line-chart">
+                        <div class="chart-grid">
+                            <div class="grid-line"></div>
+                            <div class="grid-line"></div>
+                            <div class="grid-line"></div>
+                            <div class="grid-line"></div>
+                        </div>
+                        <div class="chart-lines">
+                            <svg viewBox="0 0 100 50" preserveAspectRatio="none" class="chart-svg">
+                                <path d="M0,35 L14.2,28 L28.5,32 L42.8,15 L57.1,18 L71.4,10 L85.7,5 L100,8" class="chart-path"></path>
+                                <circle cx="0" cy="35" r="2" class="chart-point" data-label="Mon"></circle>
+                                <circle cx="14.2" cy="28" r="2" class="chart-point" data-label="Tue"></circle>
+                                <circle cx="28.5" cy="32" r="2" class="chart-point" data-label="Wed"></circle>
+                                <circle cx="42.8" cy="15" r="2" class="chart-point" data-label="Thu"></circle>
+                                <circle cx="57.1" cy="18" r="2" class="chart-point" data-label="Fri"></circle>
+                                <circle cx="71.4" cy="10" r="2" class="chart-point" data-label="Sat"></circle>
+                                <circle cx="85.7" cy="5" r="2" class="chart-point" data-label="Sun"></circle>
+                                <circle cx="100" cy="8" r="2" class="chart-point" data-label="Mon"></circle>
+                            </svg>
+                        </div>
+                        <div class="chart-labels">
+                            <div class="chart-label">Mon</div>
+                            <div class="chart-label">Tue</div>
+                            <div class="chart-label">Wed</div>
+                            <div class="chart-label">Thu</div>
+                            <div class="chart-label">Fri</div>
+                            <div class="chart-label">Sat</div>
+                            <div class="chart-label">Sun</div>
+                            <div class="chart-label">Mon</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Licensing Information -->
+    <section id="licensing" class="licensing-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Licensing Information</h2>
+                <p class="section-subtitle">Transparency in our AI development processes</p>
+            </div>
+            <div class="licensing-content">
+                <div class="licensing-box">
+                    <h3>Ethical Data Sources</h3>
+                    <p>LyricVision is trained using carefully curated datasets that respect copyright and intellectual property rights. We source our training data from:</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Public domain music and lyrics archives</li>
+                        <li><i class="fas fa-check-circle"></i> Licensed content with explicit permission for AI training</li>
+                        <li><i class="fas fa-check-circle"></i> User-contributed data with appropriate consent</li>
+                    </ul>
+                </div>
+                <div class="licensing-box">
+                    <h3>Royalty-Free Output</h3>
+                    <p>Videos generated by LyricVision are:</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Free from copyright claims on the visual elements</li>
+                        <li><i class="fas fa-check-circle"></i> Safe for use on streaming platforms (note: original audio rights still apply)</li>
+                        <li><i class="fas fa-check-circle"></i> Compliant with fair use guidelines</li>
+                    </ul>
+                </div>
+                <div class="licensing-box">
+                    <h3>Our Ethical Commitment</h3>
+                    <p>We are committed to:</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Regular audits of our training data</li>
+                        <li><i class="fas fa-check-circle"></i> Removing any copyrighted content upon request</li>
+                        <li><i class="fas fa-check-circle"></i> Continuous improvement of our ethical guidelines</li>
+                        <li><i class="fas fa-check-circle"></i> Transparency in our AI training and development processes</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="licensing-footer">
+                <p>For more detailed information about our data practices or to request removal of specific content from our training datasets, please <a href="#contact">contact our team</a>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Lyric Writer Section -->
+    <section class="lyric-writer" id="lyric-writer">
+        <div class="section-header">
+            <h2>AI Lyric Writer</h2>
+            <p class="section-subtitle">Create professional lyrics with the help of AI. Specify your theme, genre, and rhyme scheme to get started.</p>
+        </div>
+
+        <div class="lyric-writer-container">
+            <div class="lyric-input-panel">
+                <h3>Song Parameters</h3>
+                <form id="lyric-form">
+                    <div class="lyric-form-group">
+                        <label for="lyric-theme">Theme or Topic</label>
+                        <input type="text" id="lyric-theme" class="lyric-input" placeholder="Love, heartbreak, summer, dreams...">
+                    </div>
+                    
+                    <div class="lyric-form-group">
+                        <label for="lyric-genre">Genre</label>
+                        <select id="lyric-genre" class="lyric-input">
+                            <option value="pop">Pop</option>
+                            <option value="rock">Rock</option>
+                            <option value="hiphop">Hip Hop</option>
+                            <option value="edm">EDM</option>
+                            <option value="country">Country</option>
+                            <option value="rnb">R&B</option>
+                            <option value="folk">Folk</option>
+                            <option value="indie">Indie</option>
+                        </select>
+                    </div>
+                    
+                    <div class="lyric-form-group">
+                        <label for="lyric-rhyme">Rhyme Scheme</label>
+                        <select id="lyric-rhyme" class="lyric-input">
+                            <option value="aabb">AABB (simple pairs)</option>
+                            <option value="abab">ABAB (alternating)</option>
+                            <option value="aaaa">AAAA (same rhyme)</option>
+                            <option value="abcb">ABCB (second and fourth lines rhyme)</option>
+                            <option value="free">Free Verse (minimal rhyming)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="lyric-form-group">
+                        <label for="lyric-mood">Mood</label>
+                        <div class="mood-buttons">
+                            <button type="button" class="mood-btn" data-mood="happy">
+                                <i class="fas fa-smile"></i> Happy
+                            </button>
+                            <button type="button" class="mood-btn" data-mood="sad">
+                                <i class="fas fa-frown"></i> Sad
+                            </button>
+                            <button type="button" class="mood-btn" data-mood="energetic">
+                                <i class="fas fa-bolt"></i> Energetic
+                            </button>
+                            <button type="button" class="mood-btn" data-mood="romantic">
+                                <i class="fas fa-heart"></i> Romantic
+                            </button>
+                            <button type="button" class="mood-btn" data-mood="reflective">
+                                <i class="fas fa-brain"></i> Reflective
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="lyric-form-group">
+                        <label>
+                            <input type="checkbox" id="lyric-metaphors"> 
+                            <span>Use metaphors and imagery</span>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="lyric-generate-btn">
+                        <i class="fas fa-magic"></i> Generate Lyrics
+                    </button>
+                </form>
+            </div>
+            
+            <div class="lyric-output-panel">
+                <div class="lyric-output-header">
+                    <h3>Generated Lyrics</h3>
+                    <div class="lyric-actions">
+                        <button class="lyric-action-btn copy-btn" disabled>
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                        <button class="lyric-action-btn regenerate-btn" disabled>
+                            <i class="fas fa-sync-alt"></i> Regenerate
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="lyric-output-content">
+                    <div class="lyric-placeholder">
+                        <i class="fas fa-music"></i>
+                        <p>Your lyrics will appear here. Fill out the form and hit "Generate Lyrics" to start.</p>
+                    </div>
+                    
+                    <div class="lyric-result" style="display: none;">
+                        <div class="lyric-section verse">
+                            <h4><i class="fas fa-paragraph"></i> Verse</h4>
+                            <div class="lyric-lines" id="verse-output"></div>
+                        </div>
+                        
+                        <div class="lyric-section chorus">
+                            <h4><i class="fas fa-star"></i> Chorus</h4>
+                            <div class="lyric-lines" id="chorus-output"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="lyric-loading" style="display: none;">
+                        <div class="lyric-spinner">
+                            <div class="spinner-circle"></div>
+                        </div>
+                        <p>AI is crafting your lyrics...</p>
+                    </div>
+                </div>
+                
+                <div class="lyric-tips">
+                    <h4>Pro Tip</h4>
+                    <p>Great lyrics often combine emotional depth with vivid imagery. Try different moods and metaphor settings to find what works best for your song.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Hub Section -->
+    <section class="community-hub" id="community">
+        <div class="section-header">
+            <h2>Community Hub</h2>
+            <p class="section-subtitle">Connect with creators, share tracks, and discover new music from the LyricVision community</p>
+        </div>
+
+        <div class="community-container">
+            <!-- Filter and Sort Controls -->
+            <div class="community-controls">
+                <div class="community-search">
+                    <input type="text" placeholder="Search tracks, playlists, or creators" class="search-input">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                
+                <div class="filter-controls">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="tracks">Tracks</button>
+                    <button class="filter-btn" data-filter="playlists">Playlists</button>
+                    <button class="filter-btn" data-filter="creators">Creators</button>
+                </div>
+                
+                <div class="sort-dropdown">
+                    <button class="sort-btn">
+                        <span>Sort By: <span class="sort-label">Recent</span></span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="sort-options">
+                        <div class="sort-option" data-sort="recent">Most Recent</div>
+                        <div class="sort-option" data-sort="popular">Most Popular</div>
+                        <div class="sort-option" data-sort="trending">Trending</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Community Content -->
+            <div class="community-content">
+                <div class="featured-content">
+                    <div class="featured-header">
+                        <h3>Featured This Week</h3>
+                        <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <div class="featured-card">
+                        <div class="featured-cover">
+                            <img src="https://source.unsplash.com/random/600x400/?concert" alt="Featured track">
+                            <div class="featured-overlay">
+                                <button class="play-button"><i class="fas fa-play"></i></button>
+                            </div>
+                        </div>
+                        <div class="featured-info">
+                            <div class="featured-meta">
+                                <span class="meta-tag trending">Trending</span>
+                                <span class="meta-tag genre">Hip Hop</span>
+                            </div>
+                            <h4>Urban Dreams</h4>
+                            <p class="featured-desc">A collaborative track featuring 5 community artists with visuals generated using LyricVision's AI.</p>
+                            <div class="featured-creator">
+                                <img src="https://source.unsplash.com/random/100x100/?portrait" alt="Creator avatar">
+                                <div class="creator-info">
+                                    <div class="creator-name">Rhythm Collective</div>
+                                    <div class="post-date">Posted 2 days ago</div>
+                                </div>
+                            </div>
+                            <div class="featured-stats">
+                                <div class="stat"><i class="fas fa-play"></i> 4.2K</div>
+                                <div class="stat"><i class="fas fa-heart"></i> 621</div>
+                                <div class="stat"><i class="fas fa-comment"></i> 87</div>
+                                <div class="stat"><i class="fas fa-share"></i> 143</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="community-grid">
+                    <!-- Track Card 1 -->
+                    <div class="community-card" data-type="track">
+                        <div class="card-cover">
+                            <img src="https://source.unsplash.com/random/400x400/?music" alt="Track cover">
+                            <div class="cover-overlay">
+                                <button class="play-btn"><i class="fas fa-play"></i></button>
+                                <span class="duration">3:24</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span class="card-category">Track</span>
+                                <span class="card-genre">Pop</span>
+                            </div>
+                            <h4 class="card-title">Summer Memories</h4>
+                            <div class="card-creator">
+                                <img src="https://source.unsplash.com/random/100x100/?woman" alt="Creator avatar">
+                                <span>Emily Chen</span>
+                            </div>
+                            <div class="card-stats">
+                                <div class="stat-item"><i class="fas fa-heart"></i> 342</div>
+                                <div class="stat-item"><i class="fas fa-comment"></i> 28</div>
+                                <div class="stat-item"><i class="fas fa-play"></i> 1.2k</div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn like-btn"><i class="far fa-heart"></i></button>
+                                <button class="action-btn comment-btn"><i class="far fa-comment"></i></button>
+                                <button class="action-btn share-btn"><i class="far fa-share-square"></i></button>
+                                <button class="action-btn add-btn"><i class="far fa-plus-square"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Track Card 2 -->
+                    <div class="community-card" data-type="track">
+                        <div class="card-cover">
+                            <img src="https://source.unsplash.com/random/400x400/?concert" alt="Track cover">
+                            <div class="cover-overlay">
+                                <button class="play-btn"><i class="fas fa-play"></i></button>
+                                <span class="duration">4:16</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span class="card-category">Track</span>
+                                <span class="card-genre">Electronic</span>
+                            </div>
+                            <h4 class="card-title">Midnight Pulse</h4>
+                            <div class="card-creator">
+                                <img src="https://source.unsplash.com/random/100x100/?man" alt="Creator avatar">
+                                <span>DJ Nebula</span>
+                            </div>
+                            <div class="card-stats">
+                                <div class="stat-item"><i class="fas fa-heart"></i> 528</div>
+                                <div class="stat-item"><i class="fas fa-comment"></i> 42</div>
+                                <div class="stat-item"><i class="fas fa-play"></i> 2.8k</div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn like-btn"><i class="far fa-heart"></i></button>
+                                <button class="action-btn comment-btn"><i class="far fa-comment"></i></button>
+                                <button class="action-btn share-btn"><i class="far fa-share-square"></i></button>
+                                <button class="action-btn add-btn"><i class="far fa-plus-square"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Playlist Card -->
+                    <div class="community-card" data-type="playlist">
+                        <div class="card-cover">
+                            <img src="https://source.unsplash.com/random/400x400/?playlist" alt="Playlist cover">
+                            <div class="cover-overlay">
+                                <button class="play-btn"><i class="fas fa-play"></i></button>
+                                <span class="duration">14 tracks</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span class="card-category">Playlist</span>
+                                <span class="card-genre">Mixed</span>
+                            </div>
+                            <h4 class="card-title">Creative Flow</h4>
+                            <div class="card-creator">
+                                <img src="https://source.unsplash.com/random/100x100/?artist" alt="Creator avatar">
+                                <span>Creative Minds</span>
+                            </div>
+                            <div class="card-stats">
+                                <div class="stat-item"><i class="fas fa-heart"></i> 894</div>
+                                <div class="stat-item"><i class="fas fa-comment"></i> 51</div>
+                                <div class="stat-item"><i class="fas fa-play"></i> 5.7k</div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn like-btn"><i class="far fa-heart"></i></button>
+                                <button class="action-btn comment-btn"><i class="far fa-comment"></i></button>
+                                <button class="action-btn share-btn"><i class="far fa-share-square"></i></button>
+                                <button class="action-btn add-btn"><i class="far fa-plus-square"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Creator Card -->
+                    <div class="community-card" data-type="creator">
+                        <div class="card-cover creator-cover">
+                            <img src="https://source.unsplash.com/random/400x400/?studio" alt="Creator cover">
+                            <div class="creator-avatar">
+                                <img src="https://source.unsplash.com/random/200x200/?musician" alt="Creator avatar">
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span class="card-category">Creator</span>
+                                <span class="verified-badge"><i class="fas fa-check-circle"></i> Verified</span>
+                            </div>
+                            <h4 class="card-title">Alex Harmonix</h4>
+                            <p class="creator-bio">Producer and songwriter specializing in Lo-Fi and Ambient music.</p>
+                            <div class="creator-stats">
+                                <div class="stat-item"><i class="fas fa-users"></i> 12.4k</div>
+                                <div class="stat-item"><i class="fas fa-music"></i> 48</div>
+                                <div class="stat-item"><i class="fas fa-headphones"></i> 362k</div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn follow-btn"><i class="far fa-user-circle"></i> Follow</button>
+                                <button class="action-btn message-btn"><i class="far fa-envelope"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Track Card 3 -->
+                    <div class="community-card" data-type="track">
+                        <div class="card-cover">
+                            <img src="https://source.unsplash.com/random/400x400/?singer" alt="Track cover">
+                            <div class="cover-overlay">
+                                <button class="play-btn"><i class="fas fa-play"></i></button>
+                                <span class="duration">3:51</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span class="card-category">Track</span>
+                                <span class="card-genre">Folk</span>
+                            </div>
+                            <h4 class="card-title">Mountain Echo</h4>
+                            <div class="card-creator">
+                                <img src="https://source.unsplash.com/random/100x100/?singer" alt="Creator avatar">
+                                <span>Sierra Sounds</span>
+                            </div>
+                            <div class="card-stats">
+                                <div class="stat-item"><i class="fas fa-heart"></i> 276</div>
+                                <div class="stat-item"><i class="fas fa-comment"></i> 19</div>
+                                <div class="stat-item"><i class="fas fa-play"></i> 983</div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn like-btn"><i class="far fa-heart"></i></button>
+                                <button class="action-btn comment-btn"><i class="far fa-comment"></i></button>
+                                <button class="action-btn share-btn"><i class="far fa-share-square"></i></button>
+                                <button class="action-btn add-btn"><i class="far fa-plus-square"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Track Card 4 -->
+                    <div class="community-card" data-type="track">
+                        <div class="card-cover">
+                            <img src="https://source.unsplash.com/random/400x400/?band" alt="Track cover">
+                            <div class="cover-overlay">
+                                <button class="play-btn"><i class="fas fa-play"></i></button>
+                                <span class="duration">5:08</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span class="card-category">Track</span>
+                                <span class="card-genre">Rock</span>
+                            </div>
+                            <h4 class="card-title">Neon Revolution</h4>
+                            <div class="card-creator">
+                                <img src="https://source.unsplash.com/random/100x100/?rocker" alt="Creator avatar">
+                                <span>The Amplifiers</span>
+                            </div>
+                            <div class="card-stats">
+                                <div class="stat-item"><i class="fas fa-heart"></i> 462</div>
+                                <div class="stat-item"><i class="fas fa-comment"></i> 37</div>
+                                <div class="stat-item"><i class="fas fa-play"></i> 1.8k</div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn like-btn"><i class="far fa-heart"></i></button>
+                                <button class="action-btn comment-btn"><i class="far fa-comment"></i></button>
+                                <button class="action-btn share-btn"><i class="far fa-share-square"></i></button>
+                                <button class="action-btn add-btn"><i class="far fa-plus-square"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="community-pagination">
+                    <button class="pagination-btn prev-btn" disabled><i class="fas fa-chevron-left"></i></button>
+                    <div class="pagination-numbers">
+                        <span class="page-number active">1</span>
+                        <span class="page-number">2</span>
+                        <span class="page-number">3</span>
+                        <span class="page-number">...</span>
+                        <span class="page-number">12</span>
+                    </div>
+                    <button class="pagination-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>LyricVision</h3>
+                <p>Transform your lyrics into stunning videos with AI-powered technology.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <div class="footer-links">
+                    <a href="#features">Features</a>
+                    <a href="#upload">Upload</a>
+                    <a href="#community">Community</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-envelope"></i> support@lyricvision.com</li>
+                    <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Newsletter</h3>
+                <div class="newsletter">
+                    <p>Subscribe to our newsletter for updates</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 LyricVision. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+    <script src="app-initializer.js"></script>
+</body>
+</html> 

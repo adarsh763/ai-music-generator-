@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lyrics Sync Editor - LyricVision</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-music"></i>
+            <span>LyricVision</span>
+        </div>
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="../index.html#features">Features</a>
+            <a href="lyrics-sync.html" class="active">Lyrics Sync</a>
+            <a href="music-gen.html">Music Gen</a>
+            <a href="vocal-synth.html">Vocal Synth</a>
+            <button class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Lyrics Sync Editor Section -->
+    <section id="lyrics-sync" class="lyrics-sync">
+        <div class="section-header">
+            <h2>Lyrics Synchronization</h2>
+            <p class="section-subtitle">Sync your lyrics with the audio track</p>
+        </div>
+        
+        <div class="sync-editor">
+            <div class="sync-controls">
+                <div class="file-upload">
+                    <label for="lyrics-file">
+                        <div class="upload-box">
+                            <i class="fas fa-file-alt"></i>
+                            <h3>Upload Lyrics</h3>
+                            <p>Upload your .txt file or paste lyrics below</p>
+                            <span class="file-info"></span>
+                            <input type="file" id="lyrics-file" accept=".txt">
+                        </div>
+                    </label>
+                </div>
+                
+                <div class="audio-controls">
+                    <button id="play-audio" class="control-button">
+                        <i class="fas fa-play"></i>
+                        <span>Play Audio</span>
+                    </button>
+                    <button id="sync-line" class="control-button">
+                        <i class="fas fa-clock"></i>
+                        <span>Sync Current Line</span>
+                    </button>
+                    <button id="reset-sync" class="control-button">
+                        <i class="fas fa-redo"></i>
+                        <span>Reset</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="sync-interface">
+                <div class="lyrics-input">
+                    <textarea id="lyrics-text" placeholder="Paste your lyrics here or upload a .txt file..."></textarea>
+                </div>
+                
+                <div class="lyrics-display">
+                    <div id="lyrics-container"></div>
+                </div>
+            </div>
+
+            <div class="sync-actions">
+                <button id="export-sync" class="action-button">
+                    <i class="fas fa-download"></i>
+                    <span>Export Synced Lyrics</span>
+                </button>
+                <button id="preview-sync" class="action-button">
+                    <i class="fas fa-eye"></i>
+                    <span>Preview Sync</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>About LyricVision</h3>
+                <p>Transform your music into stunning visual art with our AI-powered lyrics video generator.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#features">Features</a></li>
+                    <li><a href="lyrics-sync.html">Lyrics Sync</a></li>
+                    <li><a href="music-gen.html">Music Gen</a></li>
+                    <li><a href="vocal-synth.html">Vocal Synth</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-envelope"></i> support@lyricvision.com</li>
+                    <li><i class="fas fa-phone"></i> +91 9876543210</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Delhi, India</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 LyricVision. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html> 

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Transformation - LyricVision</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-music"></i>
+            <span>LyricVision</span>
+        </div>
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="../index.html#features">Features</a>
+            <a href="lyrics-sync.html">Lyrics Sync</a>
+            <a href="music-gen.html">Music Gen</a>
+            <a href="vocal-synth.html">Vocal Synth</a>
+            <a href="song-builder.html">Song Builder</a>
+            <a href="audio-transform.html" class="active">Audio Transform</a>
+            <button class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Audio Transformation Section -->
+    <section id="audio-transform" class="audio-transform">
+        <div class="section-header">
+            <h2>Audio Transformation</h2>
+            <p class="section-subtitle">Upload your audio and transform it with AI-powered style transfer</p>
+        </div>
+
+        <div class="transform-container">
+            <div class="upload-section">
+                <div class="upload-box" id="drop-zone">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Upload Audio</h3>
+                    <p>Drag and drop your audio file here or click to browse</p>
+                    <input type="file" id="audio-upload" accept="audio/*" hidden>
+                    <div class="file-info" id="file-info"></div>
+                </div>
+            </div>
+
+            <div class="transform-options">
+                <div class="transform-card">
+                    <h3>Style Transfer</h3>
+                    <div class="style-grid">
+                        <div class="style-option" data-style="classical">
+                            <i class="fas fa-music"></i>
+                            <span>Classical</span>
+                        </div>
+                        <div class="style-option" data-style="jazz">
+                            <i class="fas fa-saxophone"></i>
+                            <span>Jazz</span>
+                        </div>
+                        <div class="style-option" data-style="rock">
+                            <i class="fas fa-guitar"></i>
+                            <span>Rock</span>
+                        </div>
+                        <div class="style-option" data-style="electronic">
+                            <i class="fas fa-synth"></i>
+                            <span>Electronic</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="transform-card">
+                    <h3>Mood Adjustment</h3>
+                    <div class="mood-sliders">
+                        <div class="slider-group">
+                            <label for="energy">Energy</label>
+                            <input type="range" id="energy" min="0" max="100" value="50">
+                            <span class="slider-value">50%</span>
+                        </div>
+                        <div class="slider-group">
+                            <label for="happiness">Happiness</label>
+                            <input type="range" id="happiness" min="0" max="100" value="50">
+                            <span class="slider-value">50%</span>
+                        </div>
+                        <div class="slider-group">
+                            <label for="intensity">Intensity</label>
+                            <input type="range" id="intensity" min="0" max="100" value="50">
+                            <span class="slider-value">50%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="transform-card">
+                    <h3>Advanced Settings</h3>
+                    <div class="advanced-options">
+                        <div class="form-group">
+                            <label for="tempo">Tempo Adjustment</label>
+                            <select id="tempo">
+                                <option value="original">Original</option>
+                                <option value="faster">Faster (+20%)</option>
+                                <option value="slower">Slower (-20%)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="key">Key Change</label>
+                            <select id="key">
+                                <option value="original">Original</option>
+                                <option value="up">Up 1 Semitone</option>
+                                <option value="down">Down 1 Semitone</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="preview-section">
+                <div class="preview-card">
+                    <h3>Preview</h3>
+                    <div class="waveform-container">
+                        <div class="waveform" id="original-waveform"></div>
+                    </div>
+                    <div class="preview-controls">
+                        <button class="control-button" id="play-original">
+                            <i class="fas fa-play"></i>
+                            <span>Original</span>
+                        </button>
+                        <button class="control-button" id="play-transformed">
+                            <i class="fas fa-play"></i>
+                            <span>Transformed</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="transform-actions">
+                <button class="action-button" id="apply-transform">
+                    <i class="fas fa-magic"></i>
+                    <span>Apply Transformation</span>
+                </button>
+                <button class="action-button" id="download-transformed">
+                    <i class="fas fa-download"></i>
+                    <span>Download</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>About LyricVision</h3>
+                <p>Transform your music into stunning visual art with our AI-powered lyrics video generator.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#features">Features</a></li>
+                    <li><a href="lyrics-sync.html">Lyrics Sync</a></li>
+                    <li><a href="music-gen.html">Music Gen</a></li>
+                    <li><a href="vocal-synth.html">Vocal Synth</a></li>
+                    <li><a href="song-builder.html">Song Builder</a></li>
+                    <li><a href="audio-transform.html">Audio Transform</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-envelope"></i> support@lyricvision.com</li>
+                    <li><i class="fas fa-phone"></i> +91 9876543210</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Delhi, India</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 LyricVision. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html> 

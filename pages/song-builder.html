@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song Structure Builder - LyricVision</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-music"></i>
+            <span>LyricVision</span>
+        </div>
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="../index.html#features">Features</a>
+            <a href="lyrics-sync.html">Lyrics Sync</a>
+            <a href="music-gen.html">Music Gen</a>  
+            <a href="vocal-synth.html">Vocal Synth</a>
+            <a href="song-builder.html" class="active">Song Builder</a>
+            <button class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Song Structure Builder Section -->
+    <section id="song-builder" class="song-builder">
+        <div class="section-header">
+            <h2>Song Structure Builder</h2>
+            <p class="section-subtitle">Drag and drop sections to build your song structure</p>
+        </div>
+        
+        <div class="song-builder-container">
+            <div class="builder-interface">
+                <div class="sections-palette">
+                    <h3>Available Sections</h3>
+                    <div class="section-items">
+                        <div class="section-item" draggable="true" data-type="intro">
+                            <i class="fas fa-play"></i>
+                            <span>Intro</span>
+                        </div>
+                        <div class="section-item" draggable="true" data-type="verse">
+                            <i class="fas fa-align-left"></i>
+                            <span>Verse</span>
+                        </div>
+                        <div class="section-item" draggable="true" data-type="chorus">
+                            <i class="fas fa-music"></i>
+                            <span>Chorus</span>
+                        </div>
+                        <div class="section-item" draggable="true" data-type="bridge">
+                            <i class="fas fa-archway"></i>
+                            <span>Bridge</span>
+                        </div>
+                        <div class="section-item" draggable="true" data-type="outro">
+                            <i class="fas fa-stop"></i>
+                            <span>Outro</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="song-timeline">
+                    <h3>Song Timeline</h3>
+                    <div class="timeline-container">
+                        <div class="timeline-items" id="timeline-items">
+                            <!-- Timeline items will be added here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-settings">
+                <h3>Section Settings</h3>
+                <div class="settings-form">
+                    <div class="form-group">
+                        <label for="section-name">Section Name</label>
+                        <input type="text" id="section-name" placeholder="e.g., Verse 1">
+                    </div>
+                    <div class="form-group">
+                        <label for="section-duration">Duration (seconds)</label>
+                        <input type="number" id="section-duration" min="1" value="30">
+                    </div>
+                    <div class="form-group">
+                        <label for="transition-type">Transition Type</label>
+                        <select id="transition-type">
+                            <option value="cut">Cut</option>
+                            <option value="fade">Fade</option>
+                            <option value="crossfade">Crossfade</option>
+                            <option value="build">Build</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="transition-duration">Transition Duration (seconds)</label>
+                        <input type="number" id="transition-duration" min="0" max="5" step="0.1" value="1">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="builder-actions">
+            <button class="action-button" id="preview-song">
+                <i class="fas fa-play"></i>
+                <span>Preview Song</span>
+            </button>
+            <button class="action-button" id="export-structure">
+                <i class="fas fa-download"></i>
+                <span>Export Structure</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>About LyricVision</h3>
+                <p>Transform your music into stunning visual art with our AI-powered lyrics video generator.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#features">Features</a></li>
+                    <li><a href="lyrics-sync.html">Lyrics Sync</a></li>
+                    <li><a href="music-gen.html">Music Gen</a></li>
+                    <li><a href="vocal-synth.html">Vocal Synth</a></li>
+                    <li><a href="song-builder.html">Song Builder</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-envelope"></i> support@lyricvision.com</li>
+                    <li><i class="fas fa-phone"></i> +91 9876543210</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Delhi, India</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 LyricVision. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html> 

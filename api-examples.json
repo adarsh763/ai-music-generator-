@@ -1,0 +1,287 @@
+{
+  "examples": {
+    "generationRequest": {
+      "summary": "Example generation request",
+      "request": {
+        "type": "both",
+        "inputText": "Write a song about overcoming challenges and finding strength in difficult times",
+        "genre": "pop",
+        "mood": "uplifting",
+        "tempo": 120,
+        "key": "G",
+        "structure": [
+          {
+            "type": "intro",
+            "duration": 8
+          },
+          {
+            "type": "verse",
+            "duration": 16,
+            "lyricsPrompt": "Describe the struggle and challenges faced"
+          },
+          {
+            "type": "chorus",
+            "duration": 8,
+            "lyricsPrompt": "Focus on hope and strength"
+          },
+          {
+            "type": "verse",
+            "duration": 16,
+            "lyricsPrompt": "Describe the journey of growth"
+          },
+          {
+            "type": "chorus",
+            "duration": 8
+          },
+          {
+            "type": "bridge",
+            "duration": 8,
+            "lyricsPrompt": "Moment of reflection and realization"
+          },
+          {
+            "type": "chorus",
+            "duration": 12,
+            "lyricsPrompt": "Final empowering chorus with slight variation"
+          },
+          {
+            "type": "outro",
+            "duration": 4
+          }
+        ],
+        "instruments": [
+          "vocals",
+          "piano",
+          "guitar",
+          "bass",
+          "drums",
+          "strings"
+        ],
+        "vocalGender": "female",
+        "duration": 210,
+        "advancedParams": {
+          "harmonyComplexity": 7,
+          "rhythmComplexity": 5,
+          "lydynamicRange": 8,
+          "rhymeScheme": "ABAB"
+        }
+      },
+      "response": {
+        "jobId": "gen_7c9b5e3d8f2a1c6b",
+        "status": "queued",
+        "estimatedCompletionTime": "2023-06-15T10:15:30Z",
+        "message": "Your generation job has been queued and will begin processing shortly"
+      }
+    },
+    "jobStatusResponse": {
+      "summary": "Example job status response (completed)",
+      "request": {
+        "jobId": "gen_7c9b5e3d8f2a1c6b"
+      },
+      "response": {
+        "jobId": "gen_7c9b5e3d8f2a1c6b",
+        "status": "completed",
+        "progress": 100,
+        "createdAt": "2023-06-15T10:10:30Z",
+        "completedAt": "2023-06-15T10:14:45Z",
+        "results": {
+          "musicUrl": "https://storage.lyricvision.com/generated/gen_7c9b5e3d8f2a1c6b/rising_strong.mp3",
+          "lyricsUrl": "https://storage.lyricvision.com/generated/gen_7c9b5e3d8f2a1c6b/rising_strong.txt",
+          "videoUrl": "https://storage.lyricvision.com/generated/gen_7c9b5e3d8f2a1c6b/rising_strong.mp4",
+          "waveformUrl": "https://storage.lyricvision.com/generated/gen_7c9b5e3d8f2a1c6b/waveform.png",
+          "stems": {
+            "vocalsUrl": "https://storage.lyricvision.com/generated/gen_7c9b5e3d8f2a1c6b/stems/vocals.mp3",
+            "drumsUrl": "https://storage.lyricvision.com/generated/gen_7c9b5e3d8f2a1c6b/stems/drums.mp3",
+            "bassUrl": "https://storage.lyricvision.com/generated/gen_7c9b5e3d8f2a1c6b/stems/bass.mp3",
+            "instrumentsUrl": "https://storage.lyricvision.com/generated/gen_7c9b5e3d8f2a1c6b/stems/instruments.mp3"
+          },
+          "metadata": {
+            "title": "Rising Strong",
+            "duration": 213.5,
+            "tempo": 120,
+            "key": "G",
+            "structure": [
+              {
+                "type": "intro",
+                "startTime": 0,
+                "endTime": 16.0
+              },
+              {
+                "type": "verse",
+                "startTime": 16.0,
+                "endTime": 48.0
+              },
+              {
+                "type": "chorus",
+                "startTime": 48.0,
+                "endTime": 64.0
+              },
+              {
+                "type": "verse",
+                "startTime": 64.0,
+                "endTime": 96.0
+              },
+              {
+                "type": "chorus",
+                "startTime": 96.0,
+                "endTime": 112.0
+              },
+              {
+                "type": "bridge",
+                "startTime": 112.0,
+                "endTime": 128.0
+              },
+              {
+                "type": "chorus",
+                "startTime": 128.0,
+                "endTime": 152.0
+              },
+              {
+                "type": "outro",
+                "startTime": 152.0,
+                "endTime": 213.5
+              }
+            ],
+            "lyricsTimings": [
+              {
+                "line": "When shadows fall across my path",
+                "startTime": 16.0,
+                "endTime": 20.0
+              },
+              {
+                "line": "And doubts begin to cloud my mind",
+                "startTime": 20.0,
+                "endTime": 24.0
+              },
+              {
+                "line": "I've learned to find another way",
+                "startTime": 24.0,
+                "endTime": 28.0
+              },
+              {
+                "line": "To leave those fears behind",
+                "startTime": 28.0,
+                "endTime": 32.0
+              },
+              {
+                "line": "Each obstacle that blocks my road",
+                "startTime": 32.0,
+                "endTime": 36.0
+              },
+              {
+                "line": "Each mountain rising tall",
+                "startTime": 36.0,
+                "endTime": 40.0
+              },
+              {
+                "line": "Reminds me of the strength I have",
+                "startTime": 40.0,
+                "endTime": 44.0
+              },
+              {
+                "line": "To rise up from each fall",
+                "startTime": 44.0,
+                "endTime": 48.0
+              },
+              {
+                "line": "I'm rising strong, I'm breaking through",
+                "startTime": 48.0,
+                "endTime": 52.0
+              },
+              {
+                "line": "The light inside is shining new",
+                "startTime": 52.0,
+                "endTime": 56.0
+              },
+              {
+                "line": "No matter what the world may throw",
+                "startTime": 56.0,
+                "endTime": 60.0
+              },
+              {
+                "line": "I'm finding strength to grow",
+                "startTime": 60.0,
+                "endTime": 64.0
+              }
+            ]
+          }
+        }
+      }
+    },
+    "processingStatus": {
+      "summary": "Example job status response (processing)",
+      "request": {
+        "jobId": "gen_7c9b5e3d8f2a1c6b"
+      },
+      "response": {
+        "jobId": "gen_7c9b5e3d8f2a1c6b",
+        "status": "processing",
+        "progress": 65,
+        "createdAt": "2023-06-15T10:10:30Z",
+        "completedAt": null,
+        "message": "Currently generating music tracks"
+      }
+    },
+    "failedStatus": {
+      "summary": "Example job status response (failed)",
+      "request": {
+        "jobId": "gen_7c9b5e3d8f2a1c6b"
+      },
+      "response": {
+        "jobId": "gen_7c9b5e3d8f2a1c6b",
+        "status": "failed",
+        "progress": 42,
+        "createdAt": "2023-06-15T10:10:30Z",
+        "completedAt": "2023-06-15T10:12:15Z",
+        "error": {
+          "code": "INVALID_PARAMETERS",
+          "message": "Failed to process generation request",
+          "details": "The provided lyrics prompt exceeds the maximum token limit for the specified duration"
+        }
+      }
+    },
+    "lyricsOnlyRequest": {
+      "summary": "Example lyrics-only generation request",
+      "request": {
+        "type": "lyrics",
+        "inputText": "Write lyrics about a summer road trip with friends",
+        "genre": "indie",
+        "mood": "happy",
+        "structure": [
+          {
+            "type": "verse",
+            "duration": 16
+          },
+          {
+            "type": "chorus",
+            "duration": 8
+          },
+          {
+            "type": "verse",
+            "duration": 16
+          },
+          {
+            "type": "chorus",
+            "duration": 8
+          },
+          {
+            "type": "bridge",
+            "duration": 8
+          },
+          {
+            "type": "chorus",
+            "duration": 8
+          }
+        ],
+        "advancedParams": {
+          "rhymeScheme": "AABB"
+        }
+      },
+      "response": {
+        "jobId": "gen_2e4f8a9c3b5d6e7f",
+        "status": "queued",
+        "estimatedCompletionTime": "2023-06-15T10:11:30Z",
+        "message": "Your lyrics generation job has been queued and will begin processing shortly"
+      }
+    }
+  }
+} 

@@ -1,0 +1,176 @@
+{
+  "downloadHistory": {
+    "user": {
+      "id": "usr_5f9a2e7d3c1b8a4",
+      "email": "user@example.com",
+      "plan": "premium",
+      "totalDownloads": 37,
+      "storageUsed": "1.84 GB",
+      "storageLimit": "10 GB"
+    },
+    "downloads": [
+      {
+        "id": "dl_8h2j9k4l5m6n7p8",
+        "filename": "summer_vibes_lyric_video.mp4",
+        "type": "video",
+        "date": "2023-07-25T15:43:22Z",
+        "genre": "pop",
+        "fileSize": 128.4,
+        "fileSizeUnit": "MB",
+        "duration": "3:42",
+        "resolution": "1080p",
+        "generationId": "gen_7c9b5e3d8f2a1c6b",
+        "downloadUrl": "https://storage.lyricvision.com/users/usr_5f9a2e7d3c1b8a4/summer_vibes_lyric_video.mp4"
+      },
+      {
+        "id": "dl_2a3b4c5d6e7f8g9",
+        "filename": "midnight_jazz.mp3",
+        "type": "audio",
+        "date": "2023-07-24T19:12:08Z",
+        "genre": "jazz",
+        "fileSize": 8.7,
+        "fileSizeUnit": "MB",
+        "duration": "4:15",
+        "bitrate": "320 kbps",
+        "generationId": "gen_1a2b3c4d5e6f7g8h",
+        "downloadUrl": "https://storage.lyricvision.com/users/usr_5f9a2e7d3c1b8a4/midnight_jazz.mp3"
+      },
+      {
+        "id": "dl_3c4d5e6f7g8h9j0",
+        "filename": "road_trip_lyrics.txt",
+        "type": "lyrics",
+        "date": "2023-07-24T19:11:45Z",
+        "genre": "indie",
+        "fileSize": 4.2,
+        "fileSizeUnit": "KB",
+        "wordCount": 312,
+        "format": "txt",
+        "generationId": "gen_2e4f8a9c3b5d6e7f",
+        "downloadUrl": "https://storage.lyricvision.com/users/usr_5f9a2e7d3c1b8a4/road_trip_lyrics.txt"
+      },
+      {
+        "id": "dl_4e5f6g7h8j9k0l1",
+        "filename": "electronic_dreams_stems.zip",
+        "type": "stems",
+        "date": "2023-07-22T10:34:17Z",
+        "genre": "edm",
+        "fileSize": 78.6,
+        "fileSizeUnit": "MB",
+        "stemCount": 4,
+        "includes": ["vocals", "drums", "bass", "synths"],
+        "generationId": "gen_3g4h5j6k7l8m9n0p",
+        "downloadUrl": "https://storage.lyricvision.com/users/usr_5f9a2e7d3c1b8a4/electronic_dreams_stems.zip"
+      },
+      {
+        "id": "dl_5g6h7j8k9l0m1n2",
+        "filename": "city_lights.mp3",
+        "type": "audio",
+        "date": "2023-07-21T14:36:02Z",
+        "genre": "hiphop",
+        "fileSize": 9.2,
+        "fileSizeUnit": "MB",
+        "duration": "3:03",
+        "bitrate": "320 kbps",
+        "generationId": "gen_a1b2c3d4e5f6g7h8",
+        "downloadUrl": "https://storage.lyricvision.com/users/usr_5f9a2e7d3c1b8a4/city_lights.mp3"
+      },
+      {
+        "id": "dl_6h7j8k9l0m1n2p3",
+        "filename": "city_lights_video.mp4",
+        "type": "video",
+        "date": "2023-07-21T14:36:28Z",
+        "genre": "hiphop",
+        "fileSize": 112.7,
+        "fileSizeUnit": "MB",
+        "duration": "3:03",
+        "resolution": "1080p",
+        "generationId": "gen_a1b2c3d4e5f6g7h8",
+        "downloadUrl": "https://storage.lyricvision.com/users/usr_5f9a2e7d3c1b8a4/city_lights_video.mp4"
+      },
+      {
+        "id": "dl_7j8k9l0m1n2p3q4",
+        "filename": "acoustic_sunrise.mp3",
+        "type": "audio",
+        "date": "2023-07-19T08:55:41Z",
+        "genre": "folk",
+        "fileSize": 7.8,
+        "fileSizeUnit": "MB",
+        "duration": "3:22",
+        "bitrate": "320 kbps",
+        "generationId": "gen_4h5j6k7l8m9n0p1q",
+        "downloadUrl": "https://storage.lyricvision.com/users/usr_5f9a2e7d3c1b8a4/acoustic_sunrise.mp3"
+      },
+      {
+        "id": "dl_8k9l0m1n2p3q4r5",
+        "filename": "rock_anthem_stems.zip",
+        "type": "stems",
+        "date": "2023-07-15T16:27:33Z",
+        "genre": "rock",
+        "fileSize": 102.3,
+        "fileSizeUnit": "MB",
+        "stemCount": 5,
+        "includes": ["vocals", "drums", "bass", "guitar_rhythm", "guitar_lead"],
+        "generationId": "gen_5j6k7l8m9n0p1q2r",
+        "downloadUrl": "https://storage.lyricvision.com/users/usr_5f9a2e7d3c1b8a4/rock_anthem_stems.zip"
+      },
+      {
+        "id": "dl_9l0m1n2p3q4r5s6",
+        "filename": "dreamy_nights.lrc",
+        "type": "lyrics",
+        "date": "2023-07-12T21:08:12Z",
+        "genre": "lofi",
+        "fileSize": 6.8,
+        "fileSizeUnit": "KB",
+        "wordCount": 245,
+        "format": "lrc",
+        "generationId": "gen_6k7l8m9n0p1q2r3s",
+        "downloadUrl": "https://storage.lyricvision.com/users/usr_5f9a2e7d3c1b8a4/dreamy_nights.lrc"
+      },
+      {
+        "id": "dl_0m1n2p3q4r5s6t7",
+        "filename": "classical_composition.mp3",
+        "type": "audio",
+        "date": "2023-07-10T11:23:47Z",
+        "genre": "classical",
+        "fileSize": 15.4,
+        "fileSizeUnit": "MB",
+        "duration": "6:22",
+        "bitrate": "320 kbps",
+        "generationId": "gen_7l8m9n0p1q2r3s4t",
+        "downloadUrl": "https://storage.lyricvision.com/users/usr_5f9a2e7d3c1b8a4/classical_composition.mp3"
+      },
+      {
+        "id": "dl_1n2p3q4r5s6t7u8",
+        "filename": "rising_strong_video.mp4",
+        "type": "video",
+        "date": "2023-06-15T10:17:22Z",
+        "genre": "pop",
+        "fileSize": 124.8,
+        "fileSizeUnit": "MB",
+        "duration": "3:33",
+        "resolution": "1080p",
+        "generationId": "gen_7c9b5e3d8f2a1c6b",
+        "downloadUrl": "https://storage.lyricvision.com/users/usr_5f9a2e7d3c1b8a4/rising_strong_video.mp4"
+      },
+      {
+        "id": "dl_2p3q4r5s6t7u8v9",
+        "filename": "rising_strong_stems.zip",
+        "type": "stems",
+        "date": "2023-06-15T10:18:05Z",
+        "genre": "pop",
+        "fileSize": 85.2,
+        "fileSizeUnit": "MB",
+        "stemCount": 4,
+        "includes": ["vocals", "drums", "bass", "instruments"],
+        "generationId": "gen_7c9b5e3d8f2a1c6b",
+        "downloadUrl": "https://storage.lyricvision.com/users/usr_5f9a2e7d3c1b8a4/rising_strong_stems.zip"
+      }
+    ],
+    "pagination": {
+      "currentPage": 1,
+      "totalPages": 4,
+      "itemsPerPage": 12,
+      "totalItems": 37
+    }
+  }
+} 

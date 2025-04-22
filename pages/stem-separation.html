@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stem Separation - LyricVision</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-music"></i>
+            <span>LyricVision</span>
+        </div>
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="../index.html#features">Features</a>
+            <a href="lyrics-sync.html">Lyrics Sync</a>
+            <a href="music-gen.html">Music Gen</a>
+            <a href="vocal-synth.html">Vocal Synth</a>
+            <a href="song-builder.html">Song Builder</a>
+            <a href="audio-transform.html">Audio Transform</a>
+            <a href="stem-separation.html" class="active">Stem Separation</a>
+            <button class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Stem Separation Section -->
+    <section id="stem-separation" class="stem-separation">
+        <div class="section-header">
+            <h2>Stem Separation</h2>
+            <p class="section-subtitle">Upload your audio track and separate it into individual stems using AI</p>
+        </div>
+
+        <div class="stem-container">
+            <!-- Upload Section -->
+            <div class="upload-section">
+                <div class="upload-box" id="drop-zone">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Upload Audio</h3>
+                    <p>Drag and drop your audio file here or click to browse</p>
+                    <input type="file" id="audio-upload" accept="audio/*" hidden>
+                    <div class="file-info" id="file-info"></div>
+                </div>
+            </div>
+
+            <!-- Processing Section -->
+            <div class="processing-section">
+                <div class="processing-card">
+                    <h3>Processing Options</h3>
+                    <div class="stem-options">
+                        <div class="stem-option">
+                            <input type="checkbox" id="vocals" checked>
+                            <label for="vocals">
+                                <i class="fas fa-microphone"></i>
+                                <span>Vocals</span>
+                            </label>
+                        </div>
+                        <div class="stem-option">
+                            <input type="checkbox" id="drums" checked>
+                            <label for="drums">
+                                <i class="fas fa-drum"></i>
+                                <span>Drums</span>
+                            </label>
+                        </div>
+                        <div class="stem-option">
+                            <input type="checkbox" id="bass" checked>
+                            <label for="bass">
+                                <i class="fas fa-guitar"></i>
+                                <span>Bass</span>
+                            </label>
+                        </div>
+                        <div class="stem-option">
+                            <input type="checkbox" id="other" checked>
+                            <label for="other">
+                                <i class="fas fa-music"></i>
+                                <span>Other Instruments</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="quality-options">
+                        <label for="quality">Separation Quality</label>
+                        <select id="quality">
+                            <option value="high">High (Best Quality)</option>
+                            <option value="medium" selected>Medium (Balanced)</option>
+                            <option value="low">Low (Faster Processing)</option>
+                        </select>
+                    </div>
+                    <button class="process-button" id="process-button">
+                        <i class="fas fa-cogs"></i>
+                        <span>Start Processing</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-section">
+                <div class="results-card">
+                    <h3>Separated Stems</h3>
+                    <div class="stems-grid">
+                        <div class="stem-card" id="vocals-stem">
+                            <div class="stem-header">
+                                <i class="fas fa-microphone"></i>
+                                <h4>Vocals</h4>
+                            </div>
+                            <div class="waveform-container">
+                                <div class="waveform"></div>
+                            </div>
+                            <div class="stem-controls">
+                                <button class="play-button">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                <button class="download-button">
+                                    <i class="fas fa-download"></i>
+                                    <span>Download</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="stem-card" id="drums-stem">
+                            <div class="stem-header">
+                                <i class="fas fa-drum"></i>
+                                <h4>Drums</h4>
+                            </div>
+                            <div class="waveform-container">
+                                <div class="waveform"></div>
+                            </div>
+                            <div class="stem-controls">
+                                <button class="play-button">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                <button class="download-button">
+                                    <i class="fas fa-download"></i>
+                                    <span>Download</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="stem-card" id="bass-stem">
+                            <div class="stem-header">
+                                <i class="fas fa-guitar"></i>
+                                <h4>Bass</h4>
+                            </div>
+                            <div class="waveform-container">
+                                <div class="waveform"></div>
+                            </div>
+                            <div class="stem-controls">
+                                <button class="play-button">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                <button class="download-button">
+                                    <i class="fas fa-download"></i>
+                                    <span>Download</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="stem-card" id="other-stem">
+                            <div class="stem-header">
+                                <i class="fas fa-music"></i>
+                                <h4>Other Instruments</h4>
+                            </div>
+                            <div class="waveform-container">
+                                <div class="waveform"></div>
+                            </div>
+                            <div class="stem-controls">
+                                <button class="play-button">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                <button class="download-button">
+                                    <i class="fas fa-download"></i>
+                                    <span>Download</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>About LyricVision</h3>
+                <p>Transform your music into stunning visual art with our AI-powered lyrics video generator.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#features">Features</a></li>
+                    <li><a href="lyrics-sync.html">Lyrics Sync</a></li>
+                    <li><a href="music-gen.html">Music Gen</a></li>
+                    <li><a href="vocal-synth.html">Vocal Synth</a></li>
+                    <li><a href="song-builder.html">Song Builder</a></li>
+                    <li><a href="audio-transform.html">Audio Transform</a></li>
+                    <li><a href="stem-separation.html">Stem Separation</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-envelope"></i> support@lyricvision.com</li>
+                    <li><i class="fas fa-phone"></i> +91 9876543210</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Delhi, India</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 LyricVision. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html> 

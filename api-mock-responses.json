@@ -1,0 +1,352 @@
+{
+  "mockResponses": {
+    "successfulGeneration": {
+      "request": {
+        "method": "POST",
+        "endpoint": "/generate",
+        "headers": {
+          "Authorization": "Bearer api_key_123456789",
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "type": "both",
+          "inputText": "Create a melodic hip-hop track about urban life and finding beauty in city landscapes",
+          "genre": "hiphop",
+          "mood": "reflective",
+          "tempo": 92,
+          "key": "F#m",
+          "structure": [
+            {
+              "type": "intro",
+              "duration": 8
+            },
+            {
+              "type": "verse",
+              "duration": 16,
+              "lyricsPrompt": "Describe city streets and urban environment"
+            },
+            {
+              "type": "chorus",
+              "duration": 8,
+              "lyricsPrompt": "Finding beauty in the concrete jungle"
+            },
+            {
+              "type": "verse",
+              "duration": 16,
+              "lyricsPrompt": "Personal journey through city life"
+            },
+            {
+              "type": "chorus",
+              "duration": 8
+            },
+            {
+              "type": "bridge",
+              "duration": 8,
+              "lyricsPrompt": "Contrast between city chaos and moments of peace"
+            },
+            {
+              "type": "chorus",
+              "duration": 8
+            },
+            {
+              "type": "outro",
+              "duration": 4
+            }
+          ],
+          "instruments": [
+            "vocals",
+            "drums",
+            "bass",
+            "synth",
+            "piano"
+          ],
+          "vocalGender": "male",
+          "duration": 180,
+          "advancedParams": {
+            "harmonyComplexity": 6,
+            "rhythmComplexity": 8,
+            "lydynamicRange": 7,
+            "rhymeScheme": "ABAB"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "X-RateLimit-Limit": "100",
+          "X-RateLimit-Remaining": "99"
+        },
+        "body": {
+          "jobId": "gen_a1b2c3d4e5f6g7h8",
+          "status": "queued",
+          "estimatedCompletionTime": "2023-07-21T14:35:45Z",
+          "message": "Your generation job has been queued and will begin processing shortly"
+        }
+      },
+      "followupStatusResponse": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "X-RateLimit-Limit": "100",
+          "X-RateLimit-Remaining": "98"
+        },
+        "body": {
+          "jobId": "gen_a1b2c3d4e5f6g7h8",
+          "status": "completed",
+          "progress": 100,
+          "createdAt": "2023-07-21T14:30:15Z",
+          "completedAt": "2023-07-21T14:34:52Z",
+          "results": {
+            "musicUrl": "https://storage.lyricvision.com/generated/gen_a1b2c3d4e5f6g7h8/city_lights.mp3",
+            "lyricsUrl": "https://storage.lyricvision.com/generated/gen_a1b2c3d4e5f6g7h8/city_lights.txt",
+            "videoUrl": "https://storage.lyricvision.com/generated/gen_a1b2c3d4e5f6g7h8/city_lights.mp4",
+            "waveformUrl": "https://storage.lyricvision.com/generated/gen_a1b2c3d4e5f6g7h8/waveform.png",
+            "stems": {
+              "vocalsUrl": "https://storage.lyricvision.com/generated/gen_a1b2c3d4e5f6g7h8/stems/vocals.mp3",
+              "drumsUrl": "https://storage.lyricvision.com/generated/gen_a1b2c3d4e5f6g7h8/stems/drums.mp3",
+              "bassUrl": "https://storage.lyricvision.com/generated/gen_a1b2c3d4e5f6g7h8/stems/bass.mp3",
+              "instrumentsUrl": "https://storage.lyricvision.com/generated/gen_a1b2c3d4e5f6g7h8/stems/instruments.mp3"
+            },
+            "metadata": {
+              "title": "City Lights",
+              "duration": 183.4,
+              "tempo": 92,
+              "key": "F#m",
+              "structure": [
+                {
+                  "type": "intro",
+                  "startTime": 0,
+                  "endTime": 15.7
+                },
+                {
+                  "type": "verse",
+                  "startTime": 15.7,
+                  "endTime": 47.8
+                },
+                {
+                  "type": "chorus",
+                  "startTime": 47.8,
+                  "endTime": 63.5
+                },
+                {
+                  "type": "verse",
+                  "startTime": 63.5,
+                  "endTime": 95.6
+                },
+                {
+                  "type": "chorus",
+                  "startTime": 95.6,
+                  "endTime": 111.3
+                },
+                {
+                  "type": "bridge",
+                  "startTime": 111.3,
+                  "endTime": 127.0
+                },
+                {
+                  "type": "chorus",
+                  "startTime": 127.0,
+                  "endTime": 142.7
+                },
+                {
+                  "type": "outro",
+                  "startTime": 142.7,
+                  "endTime": 183.4
+                }
+              ],
+              "lyricsTimings": [
+                {
+                  "line": "Concrete jungle where I roam",
+                  "startTime": 15.7,
+                  "endTime": 19.6
+                },
+                {
+                  "line": "Skyscrapers reaching for the sky",
+                  "startTime": 19.6,
+                  "endTime": 23.5
+                },
+                {
+                  "line": "Streets alive with a rhythm all their own",
+                  "startTime": 23.5,
+                  "endTime": 27.4
+                },
+                {
+                  "line": "Where dreams are born and sometimes die",
+                  "startTime": 27.4,
+                  "endTime": 31.3
+                },
+                {
+                  "line": "Subway rumbles underneath my feet",
+                  "startTime": 31.3,
+                  "endTime": 35.2
+                },
+                {
+                  "line": "Neon signs light up the night",
+                  "startTime": 35.2,
+                  "endTime": 39.1
+                },
+                {
+                  "line": "A thousand stories on a single street",
+                  "startTime": 39.1,
+                  "endTime": 43.0
+                },
+                {
+                  "line": "In this urban landscape painted bright",
+                  "startTime": 43.0,
+                  "endTime": 47.8
+                },
+                {
+                  "line": "City lights, they guide my way",
+                  "startTime": 47.8,
+                  "endTime": 51.7
+                },
+                {
+                  "line": "Through the chaos, I find peace",
+                  "startTime": 51.7,
+                  "endTime": 55.6
+                },
+                {
+                  "line": "Beauty hidden in the gray",
+                  "startTime": 55.6,
+                  "endTime": 59.5
+                },
+                {
+                  "line": "Urban poetry never cease",
+                  "startTime": 59.5,
+                  "endTime": 63.5
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "failedGeneration": {
+      "request": {
+        "method": "POST",
+        "endpoint": "/generate",
+        "headers": {
+          "Authorization": "Bearer api_key_123456789",
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "type": "both",
+          "inputText": "Create a song that combines every possible genre into a single track with complex polyrhythms and a tempo that changes every 4 measures",
+          "genre": "edm",
+          "mood": "energetic",
+          "tempo": 200,
+          "key": "C#",
+          "structure": [
+            {
+              "type": "intro",
+              "duration": 4
+            },
+            {
+              "type": "verse",
+              "duration": 64,
+              "lyricsPrompt": "Extremely long and detailed lyrics about music theory, quantum physics, and the history of electronic music, with intricate rhyming patterns that follow a complex mathematical sequence"
+            },
+            {
+              "type": "chorus",
+              "duration": 4
+            },
+            {
+              "type": "verse",
+              "duration": 64,
+              "lyricsPrompt": "More extremely detailed and complex lyrics that need to rhyme with the previous verse while maintaining consistent metaphors about space-time continuum"
+            },
+            {
+              "type": "bridge",
+              "duration": 32,
+              "lyricsPrompt": "Technical breakdown of how music production software works at the binary level"
+            }
+          ],
+          "instruments": [
+            "vocals",
+            "piano",
+            "guitar",
+            "bass",
+            "drums",
+            "strings",
+            "synth",
+            "brass",
+            "woodwinds",
+            "percussion"
+          ],
+          "vocalGender": "neutral",
+          "duration": 600,
+          "advancedParams": {
+            "harmonyComplexity": 10,
+            "rhythmComplexity": 10,
+            "lydynamicRange": 10,
+            "rhymeScheme": "custom:AABCCBDEEFGGHIIJJ"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "X-RateLimit-Limit": "100",
+          "X-RateLimit-Remaining": "98"
+        },
+        "body": {
+          "jobId": "gen_9z8y7x6w5v4u3t2s",
+          "status": "queued",
+          "estimatedCompletionTime": "2023-07-21T15:20:00Z",
+          "message": "Your generation job has been queued and will begin processing shortly"
+        }
+      },
+      "followupStatusResponse": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "X-RateLimit-Limit": "100",
+          "X-RateLimit-Remaining": "97"
+        },
+        "body": {
+          "jobId": "gen_9z8y7x6w5v4u3t2s",
+          "status": "failed",
+          "progress": 23,
+          "createdAt": "2023-07-21T15:05:12Z",
+          "completedAt": "2023-07-21T15:08:45Z",
+          "error": {
+            "code": "GENERATION_CONSTRAINTS_EXCEEDED",
+            "message": "Failed to process generation request due to exceeding system constraints",
+            "details": "Your request exceeds multiple generation constraints: 1) Maximum allowed duration is 300 seconds, 2) Lyrics prompt length exceeds token limit, 3) Custom rhyme schemes are not supported, 4) Complexity settings all at maximum create irresolvable composition conflicts. Please simplify your request parameters."
+          }
+        }
+      }
+    },
+    "rateLimit": {
+      "status": 429,
+      "headers": {
+        "Content-Type": "application/json",
+        "X-RateLimit-Limit": "100",
+        "X-RateLimit-Remaining": "0",
+        "X-RateLimit-Reset": "1627484400"
+      },
+      "body": {
+        "error": {
+          "code": "RATE_LIMIT_EXCEEDED",
+          "message": "You have exceeded your rate limit. Please try again after 15 minutes.",
+          "details": "Your current plan allows 100 requests per hour. You can upgrade your plan at developers.lyricvision.com/pricing for increased limits."
+        }
+      }
+    },
+    "authenticationError": {
+      "status": 401,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "error": {
+          "code": "INVALID_API_KEY",
+          "message": "Invalid API key provided.",
+          "details": "Please check your API key or generate a new one from your developer dashboard."
+        }
+      }
+    }
+  }
+} 
